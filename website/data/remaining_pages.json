@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "social-involvement",
+    "title": "Social involvement",
+    "lead": "Wolfs Advocaten places a great deal of value on social responsibility and involvement.",
+    "body": "Wolfs Advocaten, and in particular John Wolfs, is involved in several organisations. Two of these organisations focus on facilitating further research via fundraising. Wolfs Advocaten also supports a range of local, regional and (inter)national social and cultural activities. A brief summary is provided below.",
+    "image": "pages/social-involvement.jpg",
+    "blocks": [
+      {
+        "title": "Business Friends Foundation for the Limburg Cancer Research Fund",
+        "body": "This foundation makes every effort to achieve practical implementation of corporate social responsibility and to demonstrate its involvement in fighting cancer. Business Friends organise networking meetings, lectures and events for the benefit of the Limburg Cancer Research Fund. The Limburg Cancer Research Fund is affiliated to the AZM/Maastricht UMC+ fundraising organisation that raises money to fund extra research into this illness; research that will ultimately benefit every patient in Limburg in whatever hospital in Limburg. Why not become a Business Friend too? Visit www.vriendenkl.nl for more information",
+        "image": "pages/social-1.jpg",
+        "order": 1
+      },
+      {
+        "title": "The Alumni Council of the Faculty of Law at Maastricht University",
+        "body": "The organisation that allows alumni of the Maastricht University Faculty of Law to stay in contact with the faculty and their Alma Mater. This council brings a select number of alumni in contact with other alumni, students, staff members and the faculty itself. In this regard, John Wolfs , alumnus of Maastricht University, provides advice on - among other things - the extent to which the education on offer is aligned with the practice.",
+        "image": "pages/social-2.jpg",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "vacancies",
+    "title": "Work with us",
+    "lead": "We are always on the lookout for some new talent. If you (also) speak Dutch, please have a look at our vacancies.",
+    "body": "",
+    "image": "pages/vacancies.jpg",
+    "blocks": [
+      {
+        "title": "Advocaat-medewerker",
+        "body": "Wil jij nationale en grensoverschrijdende zaken behandelen en kun jij je vinden in de tekst van deze vacature?",
+        "link": "/advocaat-medewerker/",
+        "order": 1
+      }
+    ]
+  }
+]

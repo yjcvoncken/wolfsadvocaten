@@ -1,0 +1,40 @@
+{% extends 'website/base.html' %}{% load localization %}{% load static %}
+{% block title %}{% tr "About us" %}{% endblock %}
+{% block bodyclass %}inner-page about-page{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{% static 'website/about.css' %}">{% endblock %}
+{% block content %}
+<div class="about-shell">
+  {% if intro %}<section class="about-intro about-panel">
+    <h1>{{ intro|localized:"title" }}</h1>
+    <div class="about-introduction"><p class="about-lead">{{ intro|localized:"lead" }}</p><div class="about-copy">{{ intro|localized:"body"|linebreaks }}</div></div>
+    {% if intro.image %}<img class="about-office" src="{{ intro.image.url }}" alt="{% tr "About us — Wolfs Advocaten Maastricht" %}">{% endif %}
+  </section>{% endif %}
+  <div class="about-stories">
+    {% for section in stories %}<section class="about-story about-panel story-{{ section.key }}">
+      <h2>{{ section|localized:"title" }}</h2>
+      <div class="about-copy">{{ section|localized:"body"|linebreaks }}</div>
+      {% if section.image %}<img src="{{ section.image.url }}" alt="{{ section|localized:"title" }}" loading="lazy">{% endif %}
+    </section>{% endfor %}
+    {% if networks %}<section class="about-networks about-panel">
+      <h2>{% tr "Important networks" %}</h2>
+      <div class="about-network-grid">{% for network in networks %}<article>
+        <span class="network-number">{{ forloop.counter|stringformat:'02d' }}</span><h3>{{ network|localized:"title" }}</h3>
+        <div class="about-copy">{{ network|localized:"body"|linebreaks }}</div>
+        {% if network.link %}<p class="network-link">{% tr "Please visit" %} <a href="{{ network.link }}">{{ network.link }}</a> {% tr "for more information." %}</p>{% endif %}
+      </article>{% endfor %}</div>
+    </section>{% endif %}
+  </div>
+  <section class="about-team-heading about-panel" id="team"><h2>{% tr "Meet the team" %}</h2></section>
+  {% if founder %}<section class="about-founder about-panel">
+    <div class="founder-details"><span>{{ founder|localized:"lead" }}</span><h2>{{ founder|localized:"title" }}</h2>
+      {% if founder_member %}<a class="founder-email" href="mailto:{{ founder_member.email }}">{{ founder_member.email }}</a><a href="tel:{{ founder_member.phone|default:site.phone }}">{{ founder_member.phone|default:site.phone }}</a>{% endif %}
+      <div class="about-copy">{{ founder|localized:"body"|linebreaks }}</div>
+    </div>
+    {% if founder.image %}<img src="{{ founder.image.url }}" alt="{{ founder|localized:"title" }}" loading="lazy">{% endif %}
+  </section>{% endif %}
+  <section class="about-team about-panel team-list" aria-label="{% tr "Our team" %}">
+    <div class="team-grid">{% for member in team %}{% include 'website/team_card.html' %}{% endfor %}</div>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'website/about.js' %}" defer></script>{% endblock %}

@@ -1,0 +1,9 @@
+{% load localization %}<article class="team-card">
+  <a class="team-photo" href="{{ member.get_absolute_url }}">{% if member.photo %}<img src="{{ member.photo.url }}" alt="{{ member.name }}" loading="lazy">{% else %}<span>{{ member.name|slice:':1' }}</span>{% endif %}</a>
+  <div class="team-meta">
+    <h3><a href="{{ member.get_absolute_url }}">{{ member.name }}</a></h3>
+    {% if member.email %}<a class="team-email" href="mailto:{{ member.email }}">{{ member.email }}</a>{% endif %}
+    <a class="team-phone" href="tel:{{ site.phone|default:'+31 (0)85 079 97 50' }}">{{ site.phone|default:'+31 (0)85 079 97 50' }}</a>
+    <p>{{ member|localized:"role" }}</p>
+  </div>
+</article>

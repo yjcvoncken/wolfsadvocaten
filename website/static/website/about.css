@@ -1,0 +1,124 @@
+/* About us: source fonts, fluid sizes, panel spacing and sticky stack. */
+.about-page{--about-frame:50px;--about-pad:50px;--about-title:clamp(20px,calc(11px + 2.8125vw),65px);--about-body:clamp(14px,calc(13.6px + .125vw),16px);background:#d8d2c6;color:#3b3a3a;font-family:WolfsRoman,Helvetica,Arial,sans-serif}
+.about-page .about-shell{margin:0 var(--about-frame);padding-top:200px;position:relative}
+.about-page .about-shell:before{content:'';position:absolute;top:50px;left:0;right:0;height:200px;background:white;border-radius:20px 20px 0 0}
+.about-page .site-header{top:93px;left:100px;right:100px}
+.about-page .site-header .logo{width:133px}
+.about-page h1,.about-page h2{font-size:var(--about-title);line-height:normal;letter-spacing:-.03em;margin:0;font-weight:400}
+.about-page .about-panel{background:white;border-radius:20px;padding:var(--about-pad);position:relative}
+.about-page .about-copy{font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif}
+.about-page .about-copy p{margin:0 0 1.6em}
+.about-page .about-copy p:last-child{margin-bottom:0}
+.about-page .about-intro{display:grid;grid-template-columns:1fr .7fr;gap:50px 0;border-radius:0 0 20px 20px;padding-top:50px}
+.about-page .about-intro h1{align-self:start}
+.about-page .about-lead{font:clamp(20px,calc(19px + .3125vw),25px)/1.4 WolfsLight,Helvetica,sans-serif;margin:0 0 25px;letter-spacing:-.02em}
+.about-page .about-office{grid-column:1/-1;width:100%;height:40vw;object-fit:cover;border-radius:20px}
+.about-page .about-stories{display:flex;flex-direction:column;gap:50px;padding-top:50px;padding-bottom:50px;position:relative}
+.about-page .about-story{position:sticky;top:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(15.00376vw,max-content) minmax(20vw,max-content);gap:0;flex:none}
+.about-page .story-since-2003{position:relative}
+.about-page .about-story h2{grid-area:1/1;max-width:60%;align-self:start}
+.about-page .story-since-2003 h2{max-width:90%}
+.about-page .about-story .about-copy{grid-area:2/1;align-self:end;width:85%}
+.about-page .about-story img{grid-area:1/2/3/3;height:100%;max-height:calc(35.00376vw);width:100%;object-fit:cover;border-radius:20px;align-self:start}
+.about-page .story-experts img,.about-page .story-relationships img{max-height:calc(35.00376vw - 56px)}
+.about-page .about-networks{position:sticky;top:20px;padding:50px 30px;flex:none}
+.about-page .about-networks>h2{margin:0 0 36px}
+.about-page .about-network-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:70px 40px;padding:0;margin-left:20.625px;width:calc(100% - 101.25px);max-width:none}
+.about-page .about-network-grid article:last-child:nth-child(3n + 1){grid-column:2}
+.about-page .network-number{font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif}
+.about-page .about-network-grid h3{font-size:clamp(18px,calc(13.2px + .916667vw),30px);line-height:normal;letter-spacing:-.02em;margin:0 0 18px}
+.about-page .network-link{font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif;margin:24px 0 0}
+.about-page .network-link a{font-weight:700;font-family:WolfsRoman,Helvetica,sans-serif;overflow-wrap:anywhere}
+.about-page .network-link a:hover{text-decoration:underline}
+.about-page .about-team-heading{position:relative;border-radius:20px 20px 0 0;padding-bottom:10.5px;scroll-margin-top:20px}
+.about-page .about-team-heading h2{padding-bottom:25px;border-bottom:1px solid #d8d2c6}
+.about-page .about-founder{border-radius:0;display:grid;grid-template-columns:62.168367% 35.265306%;column-gap:6.908163%;align-items:start}
+.about-page .founder-details{width:100%}
+.about-page .founder-details>span{display:block;font:var(--about-body)/20px WolfsLight,Helvetica,sans-serif}
+.about-page .founder-details h2{font-size:clamp(18px,calc(11.6px + 2vw),50px);margin:0}
+.about-page .founder-details>a{display:block;font:var(--about-body)/normal WolfsLight,Helvetica,sans-serif}
+.about-page .founder-details .founder-email{font-family:WolfsRoman,Helvetica,sans-serif}
+.about-page .founder-details .about-copy{margin-top:67px}
+.about-page .founder-details .about-copy p{margin:0}
+.about-page .founder-details .about-copy p:nth-child(n+3){margin-top:1.6em}
+.about-page .about-founder>img{width:100%;height:auto;min-height:638px;object-fit:cover;border-radius:20px}
+.about-page .about-team{border-radius:0 0 20px 20px;padding:125px 50px 25px}
+.about-page .about-team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px}
+.about-page .about-person{height:576px;border:0;border-radius:20px;background:#f3f1e4;overflow:hidden;display:flex;flex-direction:column}
+.about-page .about-person-photo{height:384px;display:block;flex:none}
+.about-page .about-person-photo img{object-fit:cover;object-position:center 30%}
+.about-page .about-person-info{padding:20px 5%;flex:1;display:flex;flex-direction:column;justify-content:center}
+.about-page .about-person-info>p{font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif;margin-bottom:12px}
+.about-page .about-person-info h3{font:clamp(18px,calc(18px + .583333vw),30px)/1.2 WolfsRoman,Helvetica,sans-serif;margin:0 0 12px;letter-spacing:-.02em}
+.about-page .person-email{font:14px/1.6 WolfsRoman,Helvetica,sans-serif;overflow-wrap:anywhere}
+.about-page .person-phone{font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif}
+.about-page .site-footer{margin:50px;padding:50px;background:#6aaad3;color:#3b3a3a;border-radius:20px;font-family:WolfsLight,Helvetica,sans-serif}
+.about-page .footer-main{grid-template-columns:1.3fr 1fr 1fr 1.1fr .9fr;gap:30px;align-items:start}
+.about-page .footer-main a{font-size:clamp(13px,calc(12.4px + .1875vw),16px);line-height:2}
+.about-page .footer-main .footer-logo{width:140px;height:auto}
+.about-page .footer-bottom{margin-top:40px;padding:0;border:0;display:block;font-size:clamp(13px,calc(12.8px + .0625vw),14px);line-height:2}
+.about-page .footer-bottom span{display:block}
+@media(max-width:1000px){
+ .about-page{--about-frame:30px;--about-pad:25px;--about-title:clamp(20px,calc(10.588px + 2.94118vw),40px);--about-body:clamp(13px,calc(12.529px + .147059vw),14px)}
+ .about-page .site-header{left:55px;right:55px;top:70px}
+ .about-page .about-shell{padding-top:160px}
+ .about-page .about-shell:before{top:30px}
+ .about-page .about-intro{grid-template-columns:1fr 1fr;gap:25px;padding-top:25px}
+ .about-page .about-lead{font-size:18px}
+ .about-page .about-stories{gap:30px;padding-top:30px;padding-bottom:30px}
+ .about-page .about-story{grid-template-rows:minmax(10vw,max-content) minmax(25vw,max-content);gap:20px}
+ .about-page .about-story h2{max-width:90%}
+ .about-page .about-story .about-copy{width:100%}
+ .about-page .about-story img{max-height:none}
+ .about-page .about-networks{padding:25px 15px}
+ .about-page .about-network-grid{padding:0 10px;margin-left:0;width:100%;max-width:100%;gap:40px 20px}
+ .about-page .about-network-grid h3{font-size:22px}
+ .about-page .founder-details{width:100%}
+ .about-page .about-founder{column-gap:30px;grid-template-columns:1.8fr 1fr}
+ .about-page .about-founder>img{min-height:0;height:55vw}
+ .about-page .founder-details .about-copy{margin-top:35px}
+ .about-page .about-team{padding:60px 25px 25px}
+ .about-page .about-team-grid{gap:30px}
+ .about-page .about-person{height:auto;min-height:380px}
+ .about-page .about-person-photo{height:28vw}
+ .about-page .about-person-info{padding:20px 5%}
+ .about-page .about-person-info h3{font-size:20px}
+ .about-page .person-email{font-size:12px}
+ .about-page .site-footer{margin:30px;padding:25px}
+ .about-page .footer-main{gap:25px}
+ .about-page .footer-main a{font-size:13px}
+ .about-page .footer-main .footer-logo{width:110px}
+}
+@media(max-width:750px){
+ .about-page{--about-frame:20px;--about-pad:20px;--about-title:clamp(24px,calc(5.116px + 4.65116vw),40px);--about-body:14px}
+ .about-page .site-header{left:40px;right:40px;top:45px}
+ .about-page .site-header .logo{width:95px}
+ .about-page .about-shell{padding-top:130px}
+ .about-page .about-shell:before{top:20px}
+ .about-page .about-intro{grid-template-columns:1fr;padding-top:0;gap:25px}
+ .about-page .about-office{height:60vw}
+ .about-page .about-story{position:relative;top:auto;grid-template-columns:1fr;grid-template-rows:auto auto 70vw;gap:20px}
+ .about-page .about-story h2{grid-area:1/1;max-width:100%}
+ .about-page .about-story .about-copy{grid-area:2/1}
+ .about-page .about-story img{grid-area:3/1;height:100%;max-height:none}
+ .about-page .about-stories{gap:20px;padding:20px 0}
+ .about-page .about-networks{position:relative;top:auto;padding:20px}
+ .about-page .about-network-grid{grid-template-columns:1fr;padding:0;gap:35px}
+ .about-page .about-network-grid article:last-child:nth-child(3n + 1){grid-column:auto}
+ .about-page .about-founder{grid-template-columns:1fr;gap:25px}
+ .about-page .about-founder>img{grid-row:1;width:100%;height:90vw}
+ .about-page .about-team-grid{grid-template-columns:1fr;gap:25px}
+ .about-page .about-team{padding:25px 20px}
+ .about-page .about-person-photo{height:90vw}
+ .about-page .about-person-info{min-height:150px}
+ .about-page .site-footer{margin:20px;padding:20px}
+ .about-page .footer-main{grid-template-columns:1fr 1fr;gap:25px}
+ .about-page .footer-main .footer-logo{grid-column:auto}
+ .about-page .footer-bottom{font-size:11px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .about-page .about-enter-pending{opacity:0}
+ .about-page .about-enter-running{animation:about-float-in var(--enter-duration,1200ms) 1ms cubic-bezier(.445,.05,.55,.95) both}
+ @keyframes about-float-in{from{opacity:0;transform:translateY(var(--enter-y,-60px))}to{opacity:1;transform:translateY(0)}}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

@@ -1,0 +1,30 @@
+{% extends 'admin/base_site.html' %}{% load static %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'website/photo_admin.css' %}">{% endblock %}
+{% block extrahead %}{{ block.super }}<script src="{% static 'website/photo_admin.js' %}" defer></script>{% endblock %}
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">Home</a> &rsaquo; Photos</div>{% endblock %}
+{% block content %}
+<div id="photo-manager">
+  <p class="photo-help">Replace website photos here. Drop a photo into its frame or choose a file. It is cropped automatically to the same shape. Drag the preview to adjust the crop, then save. The website layout stays the same.</p>
+  <div class="photo-toolbar"><label>Find a photo <input id="photo-search" type="search" placeholder="Name or page…"></label><label>Page / section <select id="photo-category"><option value="">All photos</option>{% for category in categories %}<option value="{{ category }}">{{ category }}</option>{% endfor %}</select></label><span id="photo-count" role="status">{{ photos|length }} photo slots</span></div>
+  <div class="photo-gallery">
+    {% for photo in photos %}
+    <form id="photo-{{ photo.id }}" class="photo-card" method="post" action="{{ photo.action }}" enctype="multipart/form-data" data-category="{{ photo.category }}" data-search="{{ photo.title }} {{ photo.category }}">
+      {% csrf_token %}
+      <div class="photo-card-heading"><span>{{ photo.category }}</span><h2>{{ photo.title }}</h2></div>
+      <div class="photo-dropzone" tabindex="0" role="group" aria-label="Photo preview for {{ photo.title }}" style="--photo-ratio:{{ photo.width }}/{{ photo.height }}" data-width="{{ photo.width }}" data-height="{{ photo.height }}">
+        <img {% if photo.url %}src="{{ photo.url }}"{% else %}hidden{% endif %} alt="{{ photo.title }}" loading="lazy" draggable="false">
+        <span class="photo-empty" {% if photo.url %}hidden{% endif %}>No photo yet</span>
+        {% if photo.editable %}<span class="photo-drop-hint">Drop a photo here</span>{% endif %}
+      </div>
+      {% if photo.editable %}
+      <input class="photo-file" id="file-{{ photo.id }}" type="file" name="photo" accept="image/*">
+      <input type="hidden" name="center_x" value="0.5"><input type="hidden" name="center_y" value="0.5">
+      <div class="photo-actions"><label class="button photo-choose" for="file-{{ photo.id }}">Choose photo</label><button type="submit" class="button default">Save photo</button></div>
+      {% else %}<p class="photo-readonly">You have view access to this photo.</p>{% endif %}
+      <p class="photo-status" role="status" aria-live="polite"></p>
+    </form>
+    {% empty %}<p>No photos available.</p>{% endfor %}
+  </div>
+  <p id="photo-no-results" hidden>No photos match your search.</p>
+</div>
+{% endblock %}

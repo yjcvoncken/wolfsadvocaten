@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.sqlite3-*
+staticfiles/
+/media/
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+*.webm
+*.log
+.DS_Store
+.pytest_cache/

@@ -1,0 +1,25 @@
+/* Menu proportions taken from the 20:16 recording. */
+.menu-panel{--menu-padding:clamp(35px,4.55vw,84px);position:fixed;inset:0 0 0 auto;z-index:100;width:50vw;height:100dvh;min-height:0;max-height:100dvh;display:block;padding:clamp(55px,4.8vw,90px) var(--menu-padding) 70px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;background:#3b3a3a;color:#fff;border:0;border-radius:0;box-shadow:none}
+.menu-panel::-webkit-scrollbar{display:none}.menu-panel[hidden]{display:none}
+.menu-panel nav{display:block;padding:0;margin:0}.menu-primary,.menu-secondary{display:flex;flex-direction:column;align-items:flex-start}
+.menu-panel nav .menu-primary a{font:clamp(30px,2.75vw,50px)/1.25 WolfsRoman,Helvetica,Arial,sans-serif;letter-spacing:0;padding:0;margin:0 0 clamp(15px,1.25vw,24px);color:#fff}
+.menu-panel nav .menu-primary a:last-child{margin-bottom:0}
+.menu-secondary{margin-top:clamp(25px,2vw,38px);gap:clamp(10px,.95vw,18px)}
+.menu-panel nav .menu-secondary a{font:clamp(16px,1.5vw,27px)/1.25 WolfsLight,Helvetica,Arial,sans-serif;letter-spacing:0;padding:0;margin:0;color:#fff}
+.menu-panel nav a[aria-current="page"]{color:#fff}.menu-panel nav a:hover{color:#9bcbe9}
+.menu-panel nav .nav-linkedin{display:block;width:clamp(24px,1.65vw,30px);height:clamp(24px,1.65vw,30px);margin:clamp(28px,2vw,38px) 0 0;padding:0;color:#fff;line-height:1}
+.nav-linkedin svg{display:block;width:100%;height:100%}
+.menu-close{position:absolute;top:clamp(40px,4.5vw,84px);right:var(--menu-padding);width:32px;height:32px;border:0;background:transparent;color:#fff;padding:0;display:block;font-size:0}
+.menu-close span{position:absolute;left:1px;top:15px;width:30px;height:1.5px;background:currentColor;transform:rotate(45deg)}.menu-close span+span{transform:rotate(-45deg)}
+.menu-panel a:focus-visible,.menu-close:focus-visible{outline:2px solid #9bcbe9;outline-offset:7px}.menu-open{overflow:hidden}
+@media(max-width:1000px){.menu-panel{width:70vw;--menu-padding:50px;padding-top:65px}.menu-panel nav .menu-primary a{font-size:36px;margin-bottom:18px}.menu-panel nav .menu-primary a:last-child{margin-bottom:0}.menu-panel nav .menu-secondary a{font-size:20px}.menu-close{top:50px}}
+@media(max-width:750px){.menu-panel{width:100vw;--menu-padding:35px;padding-top:75px;padding-bottom:45px}.menu-panel nav .menu-primary a{font-size:34px;margin-bottom:18px}.menu-close{top:32px;right:30px}.menu-secondary{margin-top:28px;gap:14px}.menu-panel nav .menu-secondary a{font-size:18px}.menu-panel nav .nav-linkedin{width:26px;height:26px;margin-top:30px}}
+@media(prefers-reduced-motion:no-preference){.menu-panel:not([hidden]){animation:menu-appear .18s ease-out}@keyframes menu-appear{from{opacity:0}to{opacity:1}}}
+
+.language-pill form{margin:0;display:flex}.language-pill button{display:flex;gap:9px;align-items:center;opacity:.45;border:0;background:none;padding:0;color:inherit;font:inherit}.language-pill button.active{opacity:1}.language-pill button:focus-visible{outline:2px solid #004d7e;outline-offset:4px}
+@media(max-width:750px){
+  .site-header .language-pill{display:flex;height:36px;gap:10px;padding:0 10px}
+  .site-header .language-pill button{font-size:0;gap:0}
+  .site-header .language-pill button span{font-size:11px}
+  .site-header .header-actions{gap:8px}
+}

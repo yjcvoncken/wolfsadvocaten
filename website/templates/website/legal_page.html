@@ -1,0 +1,4 @@
+{% extends 'website/remaining_base.html' %}{% load localization %}
+{% block title %}{{ page|localized:"title" }}{% endblock %}
+{% block pageclass %}legal-page {{ page.slug }}-page{% endblock %}
+{% block content %}<div class="reference-shell"><section class="reference-panel legal-panel"><h1 data-enter>{{ page|localized:"title" }}</h1><div class="legal-copy">{{ page|localized:"body"|linebreaks }}</div></section></div>{% endblock %}
