@@ -17,9 +17,10 @@ A Django reproduction of the public Wolfs Advocaten site, with editable team mem
    | `DJANGO_SUPERUSER_PASSWORD` | A strong password, stored only in Railway |
 
    Generate a secret locally with `python -c "import secrets; print(secrets.token_urlsafe(64))"`. The Docker image already sets `DJANGO_DEBUG=0`. Remove `DJANGO_SUPERUSER_PASSWORD` after the administrator is created; later deployments do not reset an existing administrator's password.
-5. Deploy, then open **Settings → Networking → Generate Domain**. The app accepts the generated Railway domain automatically. Open that domain to view the site and append `/admin/` to edit it.
+5. In **Settings → Deploy**, set the healthcheck path to `/healthz/` and the timeout to 120 seconds. The Dockerfile supplies the start command automatically.
+6. Deploy, then open **Settings → Networking → Generate Domain**. The app accepts the generated Railway domain automatically. Open that domain to view the site and append `/admin/` to edit it.
 
-`Dockerfile` and `railway.json` configure the build, production Gunicorn server and `/healthz/` readiness check. Startup applies migrations, copies initial public media to the volume, and loads the public content snapshot only into an empty website database. Later deployments preserve content edits and replacement photos. No local administrator accounts, passwords, contact submissions or database files are included in the repository.
+Railway detects the `Dockerfile`, which configures the build and production Gunicorn server. Configure the readiness check in the dashboard as described above; this project does not depend on Railway's deprecated `railway.json` format. Startup applies migrations, copies initial public media to the volume, and loads the public content snapshot only into an empty website database. Later deployments preserve content edits and replacement photos. No local administrator accounts, passwords, contact submissions or database files are included in the repository.
 
 For a custom domain, set `DJANGO_ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com` and `DJANGO_CSRF_TRUSTED_ORIGINS=https://yourdomain.com,https://www.yourdomain.com` in Railway. Keep the volume attached even when using PostgreSQL: the database stores content; the volume stores photos and documents.
 
