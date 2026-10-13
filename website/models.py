@@ -19,8 +19,8 @@ class SiteSettings(BilingualContent):
     address = models.TextField(default='Wilhelminasingel 86\n6221 BL Maastricht\nThe Netherlands')
     visiting_address = models.TextField(default='Vijzelstraat 68\n1017 HL Amsterdam\nThe Netherlands')
     linkedin_url = models.URLField(blank=True, default='https://www.linkedin.com/company/wolfs-advocaten/posts/')
-    hero_image = models.ImageField(upload_to='site/', blank=True)
-    about_image = models.ImageField(upload_to='site/', blank=True)
+    hero_image = models.ImageField(max_length=500, upload_to='site/', blank=True)
+    about_image = models.ImageField(max_length=500, upload_to='site/', blank=True)
     class Meta:
         verbose_name_plural = 'Site settings'
     def __str__(self): return self.name
@@ -32,7 +32,7 @@ class TeamMember(BilingualContent):
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=60, blank=True)
     biography = models.TextField(blank=True)
-    photo = models.ImageField(upload_to='team/', blank=True)
+    photo = models.ImageField(max_length=500, upload_to='team/', blank=True)
     order = models.PositiveIntegerField(default=0)
     published = models.BooleanField(default=True)
     show_on_home = models.BooleanField(default=True)
@@ -48,7 +48,7 @@ class PracticeArea(BilingualContent):
     slug = models.SlugField(unique=True, blank=True)
     summary = models.TextField()
     body = models.TextField(blank=True, help_text='Plain text; separate paragraphs with a blank line.')
-    image = models.ImageField(upload_to='practice/', blank=True)
+    image = models.ImageField(max_length=500, upload_to='practice/', blank=True)
     order = models.PositiveIntegerField(default=0)
     published = models.BooleanField(default=True)
     class Meta:
@@ -65,7 +65,7 @@ class BlogPost(BilingualContent):
     slug = models.SlugField(max_length=250, unique=True, blank=True)
     excerpt = models.TextField(blank=True)
     body = models.TextField(help_text='Plain text; separate paragraphs with a blank line.')
-    image = models.ImageField(upload_to='blog/', blank=True)
+    image = models.ImageField(max_length=500, upload_to='blog/', blank=True)
     published_at = models.DateField()
     published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -83,9 +83,9 @@ class ContentPage(BilingualContent):
     slug = models.SlugField(unique=True)
     body = models.TextField(help_text='Plain text; separate paragraphs with a blank line.')
     lead = models.TextField(blank=True)
-    image = models.ImageField(upload_to='pages/', blank=True)
-    document_nl = models.FileField(upload_to='documents/', blank=True, verbose_name='Document (Dutch)')
-    document = models.FileField(upload_to='documents/', blank=True, help_text='Optional PDF or document linked from this page.')
+    image = models.ImageField(max_length=500, upload_to='pages/', blank=True)
+    document_nl = models.FileField(max_length=500, upload_to='documents/', blank=True, verbose_name='Document (Dutch)')
+    document = models.FileField(max_length=500, upload_to='documents/', blank=True, help_text='Optional PDF or document linked from this page.')
     published = models.BooleanField(default=True)
     def get_absolute_url(self): return reverse('content_page', args=[self.slug])
     def __str__(self): return self.title
@@ -116,7 +116,7 @@ class AboutSection(BilingualContent):
     title = models.CharField(max_length=160)
     lead = models.TextField(blank=True)
     body = models.TextField(blank=True, help_text='Separate paragraphs with a blank line.')
-    image = models.ImageField(upload_to='about/', blank=True)
+    image = models.ImageField(max_length=500, upload_to='about/', blank=True)
     link = models.URLField(blank=True)
     order = models.PositiveIntegerField(default=0)
     published = models.BooleanField(default=True)
@@ -141,7 +141,7 @@ class ContentBlock(BilingualContent):
     page = models.ForeignKey(ContentPage, on_delete=models.CASCADE, related_name='blocks')
     title = models.CharField(max_length=200)
     body = models.TextField(blank=True)
-    image = models.ImageField(upload_to='pages/', blank=True)
+    image = models.ImageField(max_length=500, upload_to='pages/', blank=True)
     link = models.CharField(max_length=300, blank=True, help_text='Local page path or external URL.')
     order = models.PositiveIntegerField(default=0)
     published = models.BooleanField(default=True)
@@ -163,7 +163,7 @@ class Vacancy(ContentBlock):
 class SitePhoto(models.Model):
     key = models.SlugField(unique=True)
     title = models.CharField(max_length=160)
-    image = models.ImageField(upload_to='site/photos/', blank=True)
+    image = models.ImageField(max_length=500, upload_to='site/photos/', blank=True)
 
     class Meta:
         ordering = ['title']

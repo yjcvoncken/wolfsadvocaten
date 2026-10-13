@@ -1,13 +1,25 @@
 from io import StringIO
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from django.contrib.auth import get_user_model
+from django.apps import apps
 from django.core.management import call_command
 from django.test import TestCase
 from .models import BlogPost, ContentPage, SiteSettings, TeamMember
 
 
 class DeploymentTests(TestCase):
+    def test_snapshot_strings_fit_database_columns(self):
+        snapshot = Path(__file__).parent / 'data' / 'deployment_content.json'
+        for record in json.loads(snapshot.read_text()):
+            model = apps.get_model(record['model'])
+            for name, value in record['fields'].items():
+                field = model._meta.get_field(name)
+                if isinstance(value, str) and getattr(field, 'max_length', None):
+                    with self.subTest(model=record['model'], pk=record['pk'], field=name):
+                        self.assertLessEqual(len(value), field.max_length)
+
     def test_fresh_deployment_restores_public_content_and_preserves_later_edits(self):
         with TemporaryDirectory() as directory, self.settings(MEDIA_ROOT=directory):
             call_command('initialize_site', stdout=StringIO())
