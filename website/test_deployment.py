@@ -1,15 +1,33 @@
 from io import StringIO
+from importlib import import_module
+from types import SimpleNamespace
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from django.contrib.auth import get_user_model
 from django.apps import apps
 from django.core.management import call_command
+from django.db import connection
 from django.test import TestCase
 from .models import BlogPost, ContentPage, SiteSettings, TeamMember
 
 
 class DeploymentTests(TestCase):
+    def test_portrait_upgrade_updates_existing_database_and_copies_media(self):
+        member = TeamMember.objects.create(name='John Wolfs', role='Edited role', photo='team/old.jpg')
+        other = TeamMember.objects.create(name='Custom member', photo='team/custom.jpg')
+        migration = import_module('website.migrations.0012_current_team_photos')
+        with TemporaryDirectory() as directory, self.settings(MEDIA_ROOT=directory):
+            migration.update_portraits(apps, SimpleNamespace(connection=connection))
+            member.refresh_from_db()
+            other.refresh_from_db()
+            self.assertEqual(member.photo.name, 'team/john-wolfs-reference-20261021.jpg')
+            self.assertEqual(member.role, 'Edited role')
+            self.assertEqual(other.photo.name, 'team/custom.jpg')
+            self.assertEqual(TeamMember.objects.count(), 2)
+            bundled = Path(__file__).parent / 'data' / 'initial_media' / member.photo.name
+            self.assertEqual((Path(directory) / member.photo.name).read_bytes(), bundled.read_bytes())
+
     def test_snapshot_strings_fit_database_columns(self):
         snapshot = Path(__file__).parent / 'data' / 'deployment_content.json'
         for record in json.loads(snapshot.read_text()):

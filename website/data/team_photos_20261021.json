@@ -1,0 +1,52 @@
+[
+  {
+    "name": "John Wolfs",
+    "photo": "team/john-wolfs-reference-20261021.jpg",
+    "source": "https://static.wixstatic.com/media/4dde0c_b781d09556384fbca19a2522806e0851~mv2.jpg"
+  },
+  {
+    "name": "Maurice van Efferink",
+    "photo": "team/maurice-van-efferink-reference-20261021.png",
+    "source": "https://static.wixstatic.com/media/b37eed_0db565f7ade447cb82b2f6f9d05b36a7~mv2.png"
+  },
+  {
+    "name": "Joost van den Akker",
+    "photo": "team/joost-van-den-akker-reference-20261021.png",
+    "source": "https://static.wixstatic.com/media/b37eed_e821c2750a2a407eb2f0ef667082394e~mv2.png"
+  },
+  {
+    "name": "Menno van Term",
+    "photo": "team/menno-van-term-reference-20261021.png",
+    "source": "https://static.wixstatic.com/media/b37eed_1991881055464b1bb27ec7fc543b695c~mv2.png"
+  },
+  {
+    "name": "Ella Delanty",
+    "photo": "team/ella-delanty-reference-20261021.png",
+    "source": "https://static.wixstatic.com/media/619a30_272eeba3f61942b2940f144f1f7ac33f~mv2.png"
+  },
+  {
+    "name": "Vera Ubaghs",
+    "photo": "team/vera-ubaghs-reference-20261021.png",
+    "source": "https://static.wixstatic.com/media/b37eed_06c7449f9a55466dba8de4d7f9e5b2ed~mv2.png"
+  },
+  {
+    "name": "Romy Brüll",
+    "photo": "team/romy-brull-reference-20261021.png",
+    "source": "https://static.wixstatic.com/media/b37eed_b364e729b7d442218ffa7943afad3885~mv2.png"
+  },
+  {
+    "name": "Ron Meulmeester",
+    "photo": "team/ron-meulmeester-reference-20261021.jpg",
+    "source": "https://static.wixstatic.com/media/b37eed_5c8b3b1de55d44d786f81632b321c611~mv2.jpg"
+  },
+  {
+    "name": "Bas Janssen",
+    "photo": "team/bas-janssen-reference-20261021.jpg",
+    "source": "https://static.wixstatic.com/media/b37eed_a58beda9213b45f5848acdb4538a0c74~mv2.jpg"
+  },
+  {
+    "name": "Gino di Antonio",
+    "photo": "team/gino-di-antonio-reference-20261021.jpg",
+    "source": "https://static.wixstatic.com/media/b37eed_f0c1b949c16b4ab9bf03fe0f1cd0852e~mv2.jpg"
+  }
+]
