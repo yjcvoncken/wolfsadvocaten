@@ -3,8 +3,9 @@ from django.utils.translation import get_language
 
 CONTENT_FIELDS = {
     'sitesettings': ('tagline', 'intro', 'address', 'visiting_address'),
-    'teammember': ('role', 'biography'),
+    'teammember': ('role', 'extra_line', 'biography'),
     'practicearea': ('title', 'summary', 'body'),
+    'practiceareasection': ('title', 'body'),
     'blogpost': ('title', 'excerpt', 'body'),
     'contentpage': ('title', 'lead', 'body'),
     'aboutsection': ('title', 'lead', 'body'),
@@ -12,6 +13,8 @@ CONTENT_FIELDS = {
 }
 
 DUTCH = {
+    'Would you like to know more?': 'Wilt u meer weten?',
+    'Feel free to contact': 'Neem gerust contact op met',
     'Home': 'Home', 'About us': 'Over ons', 'Team': 'Team', 'Blog': 'Blog', 'MENU': 'MENU',
     'Practice areas': 'Rechtsgebieden', 'Our practice areas': 'Onze rechtsgebieden',
     'Vacancies': 'Vacatures', 'Social involvement': 'Maatschappelijke betrokkenheid',
@@ -41,6 +44,10 @@ DUTCH = {
     'READ MORE >>>': 'LEES MEER >>>', 'Read more about': 'Lees meer over',
     'There are currently no open vacancies.': 'Er zijn momenteel geen openstaande vacatures.',
     'Wolfs speaking': 'Wolfs aan het woord', 'Articles are coming soon.': 'Binnenkort verschijnen hier artikelen.',
+    'Share this article': 'Deel dit artikel',
+    'Share on Facebook': 'Delen via Facebook', 'Share on X': 'Delen via X',
+    'Share on LinkedIn': 'Delen via LinkedIn', 'Copy link': 'Link kopiëren',
+    'Link copied': 'Link gekopieerd', 'Copy this link:': 'Kopieer deze link:',
     'All Posts': 'Alle berichten', '← All posts': '← Alle berichten',
     'Cannabis law': 'Cannabisrecht', 'International trade': 'Internationale handel',
     'Transport & logistics': 'Transport en logistiek', 'Customs law': 'Douanerecht',

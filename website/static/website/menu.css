@@ -16,10 +16,10 @@
 @media(max-width:750px){.menu-panel{width:100vw;--menu-padding:35px;padding-top:75px;padding-bottom:45px}.menu-panel nav .menu-primary a{font-size:34px;margin-bottom:18px}.menu-close{top:32px;right:30px}.menu-secondary{margin-top:28px;gap:14px}.menu-panel nav .menu-secondary a{font-size:18px}.menu-panel nav .nav-linkedin{width:26px;height:26px;margin-top:30px}}
 @media(prefers-reduced-motion:no-preference){.menu-panel:not([hidden]){animation:menu-appear .18s ease-out}@keyframes menu-appear{from{opacity:0}to{opacity:1}}}
 
-.language-pill form{margin:0;display:flex}.language-pill button{display:flex;gap:9px;align-items:center;opacity:.45;border:0;background:none;padding:0;color:inherit;font:inherit}.language-pill button.active{opacity:1}.language-pill button:focus-visible{outline:2px solid #004d7e;outline-offset:4px}
+.language-pill .language-flag{display:block;width:20px;height:20px;flex-shrink:0}.language-pill form{margin:0;display:flex}.language-pill button{display:flex;gap:9px;align-items:center;opacity:.45;border:0;background:none;padding:0;color:inherit;font:inherit}.language-pill button.active{opacity:1}.language-pill button:focus-visible{outline:2px solid #004d7e;outline-offset:4px}
 @media(max-width:750px){
   .site-header .language-pill{display:flex;height:36px;gap:10px;padding:0 10px}
-  .site-header .language-pill button{font-size:0;gap:0}
+  .site-header .language-pill button{font-size:0;gap:6px}
   .site-header .language-pill button span{font-size:11px}
   .site-header .header-actions{gap:8px}
 }

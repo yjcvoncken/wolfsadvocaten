@@ -1,7 +1,7 @@
 from uuid import uuid4
 
 from django.contrib import admin
-from .models import ContentBlock, AboutSection, BlogPost, ContactSubmission, ContentPage, PracticeArea, SiteSettings, TeamMember, ImportantNetwork, Vacancy
+from .models import ContentBlock, AboutSection, BlogPost, ContactSubmission, ContentPage, PracticeArea, PracticeAreaSection, SiteSettings, TeamMember, ImportantNetwork, Vacancy
 
 admin.site.site_header = 'Wolfs Advocaten'
 admin.site.site_title = 'Wolfs Advocaten admin'
@@ -20,8 +20,14 @@ class TeamMemberAdmin(admin.ModelAdmin):
     search_fields = ('name','role')
     list_filter = ('published',)
 
+class PracticeAreaSectionInline(admin.StackedInline):
+    model = PracticeAreaSection
+    extra = 0
+
+
 @admin.register(PracticeArea)
 class PracticeAreaAdmin(admin.ModelAdmin):
+    inlines = [PracticeAreaSectionInline]
     list_display = ('title','order','published')
     list_editable = ('order','published')
     prepopulated_fields = {'slug': ('title',)}
@@ -127,5 +133,7 @@ for content_model in (SiteSettings, TeamMember, PracticeArea, BlogPost, ContentP
 
 ContentBlockInline.form = translation_form(ContentBlock)
 ContentBlockInline.exclude = ('translations',)
+PracticeAreaSectionInline.form = translation_form(PracticeAreaSection)
+PracticeAreaSectionInline.exclude = ('translations',)
 
 from . import photo_admin  # Register the shared Photos gallery.

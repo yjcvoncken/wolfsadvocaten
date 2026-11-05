@@ -1,25 +1,29 @@
-body .team-list .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:50px;align-items:stretch}
-body .team-list .team-card{height:432px;min-height:0;display:flex;flex-direction:column;align-items:stretch;border:2px solid #d8d2c6;border-radius:20px;background:#faf7f2;overflow:hidden;position:relative}
-body .team-list .team-photo{width:calc(100% + 4px);height:256px;min-height:256px;display:block;margin:-2px -2px 0;flex:none;border-radius:20px 20px 0 0;overflow:hidden;background:transparent}
-body .team-list .team-photo img{object-fit:cover;object-position:center top}
-body .team-list .team-meta{width:100%;padding:16px;min-height:0;flex:1;margin:0;display:block;}
-body .team-list .team-meta>a{display:block;font:14px/1.6 WolfsRoman,Helvetica,sans-serif;color:inherit;margin:6px 0 0;overflow-wrap:anywhere}
-body .team-list .team-meta h3{font:clamp(24px,1.9vw,32px)/1.2 WolfsRoman,Helvetica,sans-serif;letter-spacing:0;margin:0}
-body .team-list .team-meta h3{width:100%;white-space:nowrap}
+/* Shared team cards on Home, About us and Team. */
+body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:40px;background:#f3f8fe}
+body .team-list .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;align-items:stretch}
+body .team-list .team-card{height:auto;min-height:0;display:flex;flex-direction:column;border:1px solid #ccc;border-radius:18px;background:#eef0f2;overflow:hidden;position:relative}
+body .team-list .team-photo{width:100%;height:auto;min-height:0;aspect-ratio:182/206;display:block;margin:0;flex:none;border-radius:0;overflow:hidden;background:transparent}
+/* Show the entire portrait so heads stay visible at every card width. */
+body .team-list .team-photo img{width:100%;height:100%;object-fit:contain;object-position:center top}
+body .team-list .team-meta{width:100%;padding:24px 12px;min-height:100px;flex:1;margin:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0;height:auto}
+body .team-list .team-meta>a{font:12px/1.5 WolfsRoman,Helvetica,sans-serif;color:inherit;margin:0;overflow-wrap:anywhere;max-width:100%}
+body .team-list .team-meta .team-email{order:-1}
+body .team-list .team-meta h3{font:clamp(17px,1.25vw,23px)/1.25 WolfsRoman,Helvetica,sans-serif;letter-spacing:0;margin:0;width:100%;white-space:nowrap}
 body .team-list .team-meta h3 a{font:inherit;display:inline-block;white-space:nowrap;word-break:normal}
-body .team-list .team-meta .team-phone{margin-top:2px}
-body .team-list .team-meta p{font:700 14px/1.6 WolfsRoman,Helvetica,sans-serif;margin:4px 0 0}
+body .team-list .team-meta .team-phone{margin-top:4px}
+body .team-list .team-meta p{font:400 12px/1.5 WolfsRoman,Helvetica,sans-serif;margin:4px 0 0}
+body .team-list .team-meta .team-extra-line{order:5}
 @media(max-width:1000px){
- body .team-list .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 30px}
- body .team-list .team-card{height:492px;overflow:hidden;align-items:center}
- body .team-list .team-photo{width:44.5%;height:206px;min-height:206px;margin:34px 0 0;border-radius:20px}
- body .team-list .team-meta{padding:16px 30px 30px;justify-content:flex-start}
- body .team-list .team-meta h3{font-size:28px}
+ body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:30px}
+ body .team-list .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+ body .team-list .team-meta h3{font-size:22px}
 }
 @media(max-width:750px){
- body .team-list .team-grid{grid-template-columns:1fr;gap:20px}
- body .team-list .team-card{height:auto;min-height:430px}
- body .team-list .team-photo{height:220px;min-height:220px;width:55%;margin-top:25px}
- body .team-list .team-meta{padding:20px 25px}
- body .team-list .team-meta h3{font-size:28px}
+ body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:24px 20px}
+ body .team-list .team-grid{grid-template-columns:1fr;gap:24px}
+ body .team-list .team-meta{padding:24px 16px}
 }
+
+/* Internal profile references throughout public page content. */
+main a.profile-mention{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+main a.profile-mention:focus-visible{outline:2px solid currentColor;outline-offset:3px}

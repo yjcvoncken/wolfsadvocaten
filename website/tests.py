@@ -4,6 +4,134 @@ from django.urls import reverse
 from .models import AboutSection, TeamMember, BlogPost, ContactSubmission, PracticeArea
 
 class WebsiteTests(TestCase):
+    def test_vacancy_detail_uses_same_footer_layout_and_language_as_listing(self):
+        import re
+        from django.utils.translation import activate, get_language
+        from .models import ContentPage, ContentBlock
+        self.addCleanup(activate, get_language())
+        listing = ContentPage.objects.create(slug='vacancies', title='Vacancies')
+        detail = ContentPage.objects.create(slug='new-attorney', title='New attorney', body='Apply today')
+        ContentBlock.objects.create(page=listing, title=detail.title, link='/new-attorney/')
+        for language, prefix, label in (('en', '', 'About us'), ('nl', '/nl', 'Over ons')):
+            activate(language)
+            overview = self.client.get(prefix + '/vacancies/')
+            response = self.client.get(prefix + '/new-attorney/')
+            self.assertTemplateUsed(response, 'website/vacancy_detail.html')
+            for page in (overview, response):
+                self.assertContains(page, 'reference-page')
+                self.assertContains(page, 'website/remaining.css')
+                self.assertContains(page, label)
+            footer = lambda page: re.search(r'<footer.*?</footer>', page.content.decode(), re.S).group()
+            self.assertEqual(footer(overview), footer(response))
+
+    def test_john_wolfs_mentions_link_across_public_content(self):
+        from django.utils.translation import activate, get_language
+        from .models import ContentPage, ContentBlock
+        self.addCleanup(activate, get_language())
+        activate('en')
+        john = TeamMember.objects.create(name='John Wolfs', role='Attorney', biography='John Wolfs biography')
+        page = ContentPage.objects.create(slug='social-involvement', title='Social involvement',
+                                         body='John Wolfs supports these projects.')
+        ContentBlock.objects.create(page=page, title='Project', body='Organized by John Wolfs.')
+        response = self.client.get(page.get_absolute_url())
+        self.assertContains(response, f'<a class="profile-mention" href="{john.get_absolute_url()}">John Wolfs</a>', count=2)
+        response = self.client.get('/nl' + page.get_absolute_url())
+        self.assertContains(response, 'class="profile-mention" href="/nl/john-wolfs/"', count=2)
+        response = self.client.get('/john-wolfs/')
+        self.assertNotContains(response, 'class="profile-mention"')
+
+    def test_profile_links_preserve_existing_links_attributes_and_escaping(self):
+        from .profile_links import link_profile_mentions
+        html = ('<p>John Wolfs &amp; colleagues. &lt;script&gt;</p>'
+                '<a href="/john-wolfs/">John Wolfs</a>'
+                '<img alt="John Wolfs" src="/portrait.jpg">'
+                '<script>const name = "John Wolfs";</script>'
+                '<p>John Wolfsburg</p><!-- John Wolfs -->')
+        linked = str(link_profile_mentions(html, '/john-wolfs/'))
+        self.assertEqual(linked.count('class="profile-mention"'), 1)
+        self.assertIn('<a href="/john-wolfs/">John Wolfs</a>', linked)
+        self.assertIn('<img alt="John Wolfs" src="/portrait.jpg">', linked)
+        self.assertIn('&amp; colleagues. &lt;script&gt;', linked)
+        self.assertIn('<script>const name = "John Wolfs";</script>', linked)
+        self.assertEqual(link_profile_mentions(html, ''), html)
+
+    def test_optional_employee_line_in_admin_cards_and_profile(self):
+        from django.utils.translation import override
+        from .translation_forms import translation_form
+        from django.forms import modelform_factory
+        member = TeamMember.objects.create(name='Example Attorney', role='Attorney')
+        self.assertNotContains(self.client.get(reverse('team')), 'team-extra-line')
+        form = modelform_factory(TeamMember, form=translation_form(TeamMember), fields='__all__')(data={
+            'name': member.name, 'role': 'Attorney', 'extra_line': 'Cooperation partner',
+            'extra_line_nl': 'Samenwerkingspartner', 'order': 0, 'published': True,
+        }, instance=member)
+        self.assertTrue(form.is_valid(), form.errors)
+        form.save()
+        self.assertContains(self.client.get(reverse('team')), 'Cooperation partner')
+        self.assertContains(self.client.get(member.get_absolute_url()), 'Cooperation partner')
+        with override('nl'):
+            self.assertContains(self.client.get(reverse('team')), 'Samenwerkingspartner')
+
+    def test_practice_sections_aliases_and_seed_preserve_edits(self):
+        from tempfile import TemporaryDirectory
+        from django.test import override_settings
+        media = TemporaryDirectory()
+        self.addCleanup(media.cleanup)
+        settings_override = override_settings(MEDIA_ROOT=media.name)
+        settings_override.enable()
+        self.addCleanup(settings_override.disable)
+        import json
+        from pathlib import Path
+        from django.core.management import call_command
+        from io import StringIO
+        from .models import PracticeAreaSection
+        source = next(row for row in json.loads((Path(__file__).parent / 'data/profiles.json').read_text())
+                      if row[:2] == ['area', 'Customs law'])
+        area = PracticeArea.objects.create(title='Customs law', slug='customs-law', body=source[2])
+        call_command('seed_practice_details', stdout=StringIO())
+        self.assertEqual(area.sections.count(), 3)
+        member = TeamMember.objects.create(name='John Wolfs', role='Attorney')
+        for url in (area.get_absolute_url(), reverse('content_page', args=['customs'])):
+            response = self.client.get(url)
+            self.assertContains(response, '<h2>Import duties (classification)</h2>', html=True)
+            self.assertContains(response, 'practice-detail-primary')
+            self.assertContains(response, 'practice-detail-secondary')
+            self.assertContains(response, member.get_absolute_url())
+        section = area.sections.first()
+        section.body = 'Admin edited topic'
+        section.save()
+        call_command('seed_practice_details', stdout=StringIO())
+        section.refresh_from_db()
+        self.assertEqual(section.body, 'Admin edited topic')
+        customized = PracticeArea.objects.create(title='Cannabis law', slug='cannabis-law', body='Custom legal text')
+        call_command('seed_practice_details', stdout=StringIO())
+        self.assertFalse(PracticeAreaSection.objects.filter(area=customized).exists())
+        self.assertContains(self.client.get(customized.get_absolute_url()), 'Custom legal text')
+
+    def test_article_contact_links_are_localized_and_escape_text(self):
+        from django.utils.translation import activate, get_language
+        self.addCleanup(activate, get_language())
+        activate('en')
+        member = TeamMember.objects.create(name='John Wolfs')
+        area = PracticeArea.objects.create(title='Customs law', slug='customs-law',
+                                          translations={'nl': {'title': 'Douanerecht'}})
+        post = BlogPost.objects.create(
+            title='Contact links', published_at=date.today(), published=True,
+            body='Customs law overview.\n\nFeel free to contact attorney John Wolfs about customs law. <script>alert(1)</script>',
+            translations={'nl': {'body': 'Neem contact op met John Wolfs over douanerecht.'}},
+        )
+        response = self.client.get(post.get_absolute_url())
+        self.assertContains(response, f'class="article-inline-link" href="{member.get_absolute_url()}">John Wolfs</a>')
+        self.assertContains(response, f'class="article-inline-link" href="{area.get_absolute_url()}">customs law</a>')
+        self.assertContains(response, '<p>Customs law overview.</p>', html=True)
+        self.assertContains(response, '&lt;script&gt;alert(1)&lt;/script&gt;')
+        response = self.client.get('/nl' + post.get_absolute_url())
+        self.assertContains(response, 'href="/nl/john-wolfs/">John Wolfs</a>')
+        self.assertContains(response, '>douanerecht</a>')
+        member.published = False
+        member.save()
+        self.assertNotContains(self.client.get(post.get_absolute_url()), '>John Wolfs</a>')
+
     def test_public_routes_and_draft_visibility(self):
         area = PracticeArea.objects.create(title='Transport', slug='transport', summary='Transport advice', published=True)
         post = BlogPost.objects.create(title='Draft article', slug='draft-article', body='Body', published_at=date.today(), published=False)
@@ -15,10 +143,29 @@ class WebsiteTests(TestCase):
         self.assertEqual(self.client.get(post.get_absolute_url()).status_code, 404)
 
     def test_contact_form_saves_valid_message(self):
+        from django.core import mail
         response = self.client.post(reverse('contact'), {'first_name':'Ada','last_name':'Lovelace','email':'ada@example.com','phone':'','message':'Hello'}, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ContactSubmission.objects.count(), 1)
         self.assertContains(response, 'Your message has been received')
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, ['info@wolfsadvocaten.nl'])
+        self.assertEqual(mail.outbox[0].reply_to, ['ada@example.com'])
+        self.assertIn('Ada Lovelace', mail.outbox[0].body)
+        self.assertIn('Hello', mail.outbox[0].body)
+
+    def test_contact_mail_failure_preserves_submission(self):
+        from unittest.mock import patch
+        from smtplib import SMTPException
+        with patch('website.views.mail.mailers') as mailers:
+            mailers.__getitem__.return_value.send_messages.side_effect = SMTPException('Unavailable')
+            with self.assertLogs('website.views', level='ERROR'):
+                response = self.client.post(reverse('contact'), {
+                    'first_name': 'Ada', 'last_name': 'Lovelace',
+                    'email': 'ada@example.com', 'message': 'Please contact me',
+                })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(ContactSubmission.objects.count(), 1)
 
 
     def test_about_content_and_team_publication(self):

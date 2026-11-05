@@ -1,1 +1,30 @@
-{% extends 'website/base.html' %}{% load localization %}{% block title %}{{ area|localized:"title" }}{% endblock %}{% block content %}<div class="inner-shell"><section class="intro-panel panel area-detail"><div class="area-detail-grid"><div></div><div><h1>{{ area|localized:"title" }}{% if area.title == 'International trade' or area.title == 'Transport & logistics' %}{% if LANGUAGE_CODE != 'nl' %} law{% endif %}{% endif %}</h1><p class="area-lead">{{ area|localized:"summary" }}</p><div class="readable">{{ area|localized:"body"|linebreaks }}</div><a class="round-link" href="{% url 'contact' %}">{% tr "CONTACT US" %}</a></div></div></section></div>{% endblock %}
+{% extends 'website/remaining_base.html' %}{% load localization static %}
+{% block title %}{{ area|localized:"title" }}{% endblock %}
+{% block pageclass %}practice-detail-page{% endblock %}
+{% block styles %}{{ block.super }}<link rel="stylesheet" href="{% static 'website/practice_detail.css' %}">{% endblock %}
+{% block content %}
+<div class="reference-shell">
+  <article class="reference-panel practice-detail-panel">
+    <h1>{{ area|localized:"title" }}{% if area.title == 'International trade' or area.title == 'Transport & logistics' %}{% if LANGUAGE_CODE != 'nl' %} law{% endif %}{% endif %}</h1>
+    <div class="practice-detail-layout">
+      {% if area.detail_image or area.image %}<div class="practice-detail-primary"><img src="{% if area.detail_image %}{{ area.detail_image.url }}{% else %}{{ area.image.url }}{% endif %}" alt="{{ area|localized:'title' }}"></div>{% endif %}
+      <div class="practice-detail-intro reference-copy">
+        {% for section in intro_sections %}
+          <section><h2>{{ section|localized:"title" }}</h2>{{ section|localized:"body"|linebreaks }}</section>
+        {% empty %}
+          <p class="reference-lead">{{ area|localized:"summary" }}</p>
+          {{ area|localized:"body"|linebreaks }}
+        {% endfor %}
+      </div>
+      <div class="practice-detail-bottom reference-copy">
+        {% for section in detail_sections %}<section><h2>{{ section|localized:"title" }}</h2>{{ section|localized:"body"|linebreaks }}</section>{% endfor %}
+        <section class="practice-detail-contact">
+          <h2>{% tr "Would you like to know more?" %}</h2>
+          <p>{% tr "Feel free to contact" %} <a href="{% if contact_member %}{{ contact_member.get_absolute_url }}{% else %}{% url 'contact' %}{% endif %}">{% if contact_member %}{{ contact_member.name }}{% else %}{% tr 'Contact us' %}{% endif %}</a>.</p>
+        </section>
+      </div>
+      {% if area.secondary_image %}<div class="practice-detail-secondary"><img src="{{ area.secondary_image.url }}" alt="{{ area|localized:'title' }}" loading="lazy"></div>{% endif %}
+    </div>
+  </article>
+</div>
+{% endblock %}

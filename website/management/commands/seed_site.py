@@ -17,7 +17,7 @@ AREAS = [
 TEAM = [
 ('John Wolfs','Attorney - managing partner','j.wolfs@wolfsadvocaten.nl','team/john.jpg'),
 ('Maurice van Efferink','Attorney','info@wolfsadvocaten.nl','team/maurice.jpg'),
-('Joost van den Akker','Jurist','info@wolfsadvocaten.nl','team/joost.jpg'),
+('Joost van den Akker','Jurist','info@wolfsadvocaten.nl','team/joost-van-den-akker-current-20261105.jpg'),
 ('Menno van Term','Paralegal','info@wolfsadvocaten.nl','team/menno.jpg'),
 ('Ella Delanty','Paralegal','info@wolfsadvocaten.nl','team/ella.jpg'),
 ('Vera Ubaghs','Office manager','info@wolfsadvocaten.nl','team/vera.jpg'),
@@ -59,6 +59,7 @@ class Command(BaseCommand):
         else:
             for i,(title,excerpt,published_at) in enumerate(POSTS,1):
                 BlogPost.objects.get_or_create(title=title,defaults={'excerpt':excerpt,'body':excerpt,'published_at':published_at,'published':True,'image':f'blog/{i}.jpg'})
+        call_command('seed_practice_details')
         call_command('seed_remaining')
         call_command('seed_legal')
         for slug,title in PAGES:

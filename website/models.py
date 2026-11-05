@@ -29,6 +29,8 @@ class SiteSettings(BilingualContent):
 class TeamMember(BilingualContent):
     name = models.CharField(max_length=120)
     role = models.CharField(max_length=120)
+    extra_line = models.CharField('Extra line below role', max_length=200, blank=True,
+                                  help_text='Optional text shown below the role on team cards and the profile.')
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=60, blank=True)
     biography = models.TextField(blank=True)
@@ -49,6 +51,8 @@ class PracticeArea(BilingualContent):
     summary = models.TextField()
     body = models.TextField(blank=True, help_text='Plain text; separate paragraphs with a blank line.')
     image = models.ImageField(max_length=500, upload_to='practice/', blank=True)
+    detail_image = models.ImageField(max_length=500, upload_to='practice/', blank=True)
+    secondary_image = models.ImageField(max_length=500, upload_to='practice/', blank=True)
     order = models.PositiveIntegerField(default=0)
     published = models.BooleanField(default=True)
     class Meta:
@@ -58,6 +62,21 @@ class PracticeArea(BilingualContent):
         super().save(*args, **kwargs)
     def get_absolute_url(self): return reverse('practice_detail', args=[self.slug])
     def __str__(self): return self.title
+
+
+class PracticeAreaSection(BilingualContent):
+    area = models.ForeignKey(PracticeArea, on_delete=models.CASCADE, related_name='sections')
+    title = models.CharField(max_length=200)
+    body = models.TextField()
+    position = models.CharField(max_length=10, choices=(('intro', 'Beside main photo'),
+                                                     ('detail', 'Below main photo')), default='intro')
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'pk']
+
+    def __str__(self):
+        return self.title
 
 
 class BlogPost(BilingualContent):

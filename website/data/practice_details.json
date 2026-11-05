@@ -1,0 +1,334 @@
+[
+  {
+    "slug": "international-trade",
+    "source": "https://www.wolfsadvocaten.nl/international-trade",
+    "detail_image": "practice/details/international-trade-1.jpg",
+    "secondary_image": "practice/details/international-trade-2.jpg",
+    "sections": [
+      {
+        "title": "International trade law",
+        "body": "International trade law regulates the legal relations between traders. Laws and regulations lay down, among other things, the legal position of traders, how trade is conducted and how to deal with trade disputes.",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Het internationaal handelsrecht",
+            "body": "Het internationaal handelsrecht regelt de rechtsbetrekkingen tussen handelaren. In wet- en regelgeving is onder meer neergelegd wat de rechtspositie is van de handelaren, op welke wijze handel wordt gedreven en hoe om te gaan met handelsconflicten."
+          }
+        }
+      },
+      {
+        "title": "United Nations Convention on contracts for the international sale of goods (CISG)",
+        "body": "The CISG is an international treaty relating to international sales contracts. The CISG applies when there is a contract for the sale of movable property between professional parties (i.e., the treaty does not cover consumer purchases) that are located in countries that are party to the treaty or if the contract contains a provision stating that the parties have opted for the law of a member country of the CISG. The CISG has been ratified by more than 85 states and is therefore readily applicable to international commercial transactions.\n\nSuppose a Dutch company sells flowers to a German company. Both countries have ratified the CISG. This means that, if the parties have not agreed on the applicable law, the treaty applies to the sales contract. The CISG contains provisions on the formation of an international sales contract and the rights and obligations arising from that contract.\n\nThe CISG contains substantive sales law and thus sets its own rules regarding quality, payment, delivery, non-conformity of goods, dissolution of sales contracts and damages.\n\nAlthough the CISG strives to be reasonable for both buyer and seller, the treaty is generally seller-friendly. In fact, many provisions in the CISG are more favorable to the seller than its equivalent under Dutch law.\n\nThe CISG is far from unknown to Wolfs Advocaten. Wolfs Advocaten will gladly advise you on (the applicability of) this treaty and its consequences.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Weens Koopverdrag",
+            "body": "Het Weens Koopverdrag is een internationaal verdrag met betrekking tot internationale koopovereenkomsten. Het Weens Koopverdrag is van toepassing als sprake is van een koopovereenkomst van roerende zaken tussen professionele partijen (het verdrag ziet dus niet op een consumentenkoop) die in landen zijn gevestigd die partij zijn bij het Weens Koopverdrag of als partijen bij hun koopovereenkomst een rechtskeuze hebben gemaakt voor het recht van een land dat lid is van het Weens Koopverdrag. Het Weens Koopverdrag is door meer dan 85 staten bekrachtigd en is dan ook al snel van toepassing op internationale handelstransacties.\n\nStel dat een Nederlands bedrijf bloemen verkoopt aan een Duitse onderneming. Beide landen hebben het Weens Koopverdrag bekrachtigd. Dit betekent dat, als de partijen niets hebben afgesproken over het toepasselijke recht, het verdrag van toepassing is op de koopovereenkomst.\n\nIn het Weens Koopverdrag staan bepalingen over de totstandkoming van een internationale koopovereenkomst en de rechten en plichten die uit deze overeenkomst voortvloeien. Het Weens Koopverdrag bevat materieel kooprecht en stelt dus eigen regels met betrekking tot de kwaliteit, betaling, aflevering, non-conformiteit van zaken, ontbinding van koopovereenkomsten en schadevergoeding.\n\nHoewel het Weens Koopverdrag ernaar streeft voor zowel koper als verkoper redelijk te zijn, is het Weens Koopverdrag over het algemeen verkoper vriendelijk. Veel bepalingen in het Weens Koopverdrag zijn voor de verkoper namelijk gunstiger dan het equivalent hiervan naar Nederlands recht.\n\nHet Weens Koopverdrag is Wolfs Advocaten verre van onbekend. Wolfs Advocaten voorziet u graag van advies over (de toepasselijkheid van) dit verdrag en de gevolgen daarvan."
+          }
+        }
+      },
+      {
+        "title": "International Commercial Terms",
+        "body": "An important part of an international contract is determining the applicable delivery terms. These delivery terms are also called International Commercial Terms, or: Incoterms in short. Incoterms are standardized international delivery terms. By declaring one of the Incoterms applicable, the parties know, among other things, who is responsible for arranging transportation, who is responsible for any import and export licenses or other customs obligations, and who bears the risk of damage to or loss of the goods in transit. Aspects such as price agreements, payment terms, warranties or the consequences of non-performance of the purchase agreement by one of the parties do not fall within the scope of Incoterms.",
+        "position": "detail",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Incoterms",
+            "body": "Een belangrijk onderdeel bij het contracteren bij internationale (ver)koop is het bepalen van de toepasselijke leveringscondities. Deze leveringscondities worden ook wel Incoterms genoemd (bijvoorbeeld Ex Works (EXW) of Free Carrier (FCA)). Incoterms zijn gestandaardiseerde internationale leveringsvoorwaarden. Door één van de Incoterms van toepassing te verklaren weten partijen onder meer wie verantwoordelijk is voor het regelen van het vervoer, wie verantwoordelijk is voor eventuele in- en uitvoervergunningen of andere douaneverplichtingen en wie het risico draagt van schade aan of verlies van de goederen tijdens het vervoer. Aspecten zoals prijsafspraken, betalingsvoorwaarden, garanties of de gevolgen van het niet nakomen van de koopovereenkomst door één van de partijen vallen niet onder de reikwijdte van de Incoterms."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "slug": "transport-logistics",
+    "source": "https://www.wolfsadvocaten.nl/transport",
+    "detail_image": "practice/details/transport-1.jpg",
+    "secondary_image": "practice/details/transport-2.jpg",
+    "sections": [
+      {
+        "title": "Transport",
+        "body": "Transportation comes in many different forms. Consider air transport, inland navigation, road transport and rail transport. Each mode of transport has its own applicable rules and industry conditions. Wolfs Advocaten is familiar with all these forms of transport and the applicable laws and regulations.",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Transport",
+            "body": "Transport kent veel verschillende vormen. Denk hierbij aan luchtvervoer, binnenvaart, wegvervoer en spoorvervoer. Elke transportmogelijkheid kent eigen toepasselijke regels en branchevoorwaarden. Wolfs Advocaten is bekend met al deze vormen van transport en de toepasselijke wet- en regelgeving."
+          }
+        }
+      },
+      {
+        "title": "Topics",
+        "body": "Wolfs Advocaten assists clients in all kinds of issues in the field of transport law. Wolfs Advocaten offers support to clients with liability issues, both in and out of court. In doing so, we look for the most satisfactory solution for the client.\n\nWhen it is necessary to litigate abroad, Wolfs Advocaten utilizes its international network.\n\nBesides liability issues, Wolfs Advocaten offers support to clients in other ways. These include drafting contracts for transport and forwarding, drafting general conditions and advising on the most diverse topics in the field of transport law.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Onderwerpen",
+            "body": "Wolfs Advocaten staat cliënten bij in allerhande kwesties op het gebied van het transportrecht. Wolfs Advocaten biedt ondersteuning aan cliënten bij aansprakelijkheidskwesties, zowel in als buiten rechte. Daarbij zoekt zij naar de meest bevredigende oplossing voor de cliënt.\n\nDaar waar in het buitenland geprocedeerd moet worden, maakt Wolfs Advocaten gebruik van haar internationale netwerk.\n\nNaast aansprakelijkheidskwesties biedt Wolfs Advocaten op andere wijze ondersteuning aan cliënten. Denk hierbij aan het opstellen van overeenkomsten voor vervoer en expeditie, het opstellen van algemene voorwaarden en het adviseren over de meest uiteenlopende onderwerpen op het gebied van het transportrecht."
+          }
+        }
+      },
+      {
+        "title": "Logistics",
+        "body": "Logistics encompasses more than just transportation from one place to another. Logistics involves the overall management of the movement of goods and services. Transportation, loading and unloading, freight forwarding, storage/warehousing, ancillary activities such as assembly and packaging, inventory management and customs activities are all included. As a result, logistics operations are highly complex not only in practice, but also legally. For example, mandatory (treaty) law may apply to some parts of the logistics operation, while for other parts freedom of contract applies. Determining the contractual arrangements between the client and the logistics service provider is therefore crucial. Wolfs Advocaten is more than happy to assist you.",
+        "position": "detail",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Logistiek",
+            "body": "Logistiek omvat meer dan alleen transport van de ene naar de andere plek. Logistiek ziet op het algemene beheer van de beweging van goederen en diensten. Vervoer, laden en lossen, expeditie, opslag/bewaarneming, bijkomende werkzaamheden als assemblage en verpakking, voorraadbeheer en douaneactiviteiten vallen hier allemaal onder.\n\nGevolg hiervan is dat logistieke operaties niet enkel in de praktijk, maar ook juridisch zeer complex zijn. Zo kan het zo zijn dat op enkele onderdelen van de logistieke operatie dwingend (verdrags)recht van toepassing is, terwijl voor andere onderdelen de contractsvrijheid geldt. Het contractueel vastleggen van de afspraken tussen de opdrachtgever en de logistiek dienstverlener is daarom van cruciaal belang. Wolfs Advocaten helpt u graag verder."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "slug": "customs-law",
+    "source": "https://www.wolfsadvocaten.nl/customs",
+    "detail_image": "practice/details/customs-1.jpeg",
+    "secondary_image": "practice/details/customs-2.jpg",
+    "sections": [
+      {
+        "title": "Topics",
+        "body": "Customs law plays an important role in international trade. Every seller, importer, manufacturer, forwarder or carrier is confronted with Customs sooner or later.\n\nDo import duties, excise duties or anti-dumping duties have to be paid when importing goods into the European Union? Is the tax declaration filed correctly or will Customs send an invitation to pay (in Dutch: UTB) after having filed the declaration? Is the Authorised Economic Operator (in short: AEO) certification complied with? Have you been fined for non-compliance with your customs obligations?\n\nWolfs Advocaten assists manufacturers and importers of goods, carriers and other logistics service providers in disputes with Customs and the tax authorities that may arise, for example, from the commodity code established for your product. Below, you will find more information on this particular topic.",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Onderwerpen",
+            "body": "Het douanerecht speelt een belangrijke rol bij internationale handel. Elke verkoper, importeur, fabrikant, expediteur of vervoerder krijgt vroeg of laat te maken met de Douane.\n\nMoeten invoerrechten, accijnzen of antidumpingheffingen worden betaald bij het importeren van goederen naar de Europese Unie? Is de aangifte correct gedaan of volgt er een naheffing (een uitnodiging tot betaling: UTB) van de Douane? Wordt de AEO-certificering nageleefd? Heeft u een boete opgelegd gekregen wegens het niet naleven van uw douaneverplichtingen? Is er sprake van actieve of passieve verdeling? Is de douanewaarde juist berekend? Wat is het verschil tussen de herkomst en de oorsprong van een product?\n\nWolfs Advocaten staat producenten en importeurs van goederen, vervoerders en andere logistieke dienstverleners bij in geschillen met de Douane en de Belastingdienst die bijvoorbeeld kunnen voortvloeien uit de voor uw product vastgestelde goederencode, waarover hieronder meer."
+          }
+        }
+      },
+      {
+        "title": "Import duties (classification)",
+        "body": "Every day, importers and customs brokers import thousands of goods into the European Union from so-called third countries. Goods imported from outside the European Union (for example, China) must be cleared in order for the goods to enter the free movement of goods. This means that you as an importer usually have to pay, among other things, import duties on the imported goods.\n\nHow much you pay depends on the product's commodity code. Customs determines which commodity code from the goods nomenclature (Harmonised System (HS) code / Combined Nomenclature (GN) code / Taric code) applies to the imported goods.\n\nWolfs Advocaten assists manufacturers and importers of goods, carriers and other logistics service providers in disputes with Customs and the tax authorities that may arise, for example, from the commodity code established for your product, about which more below.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Invoerrechten(classificatie)",
+            "body": "Dagelijks worden door importeurs en douane-expediteurs duizenden goederen ingevoerd in de Europese Unie vanuit zogeheten derde landen. Goederen die van buiten de Europese Unie (bijvoorbeeld China) worden ingevoerd, moeten worden ingeklaard om de goederen in het vrije verkeer van goederen te brengen. Dit betekent dat u als importeur meestal over de geïmporteerde goederen onder meer invoerrechten moet betalen.\n\nHoeveel u betaalt, is afhankelijk van de goederencode van het product. De Douane stelt vast welke goederencode uit de goederennomenclatuur (HS-code/GN-code/Taric-code) op de geïmporteerde goederen van toepassing zijn.\n\nHet vaststellen van de goederencode is niet gemakkelijk en kan tot een geschil met de Douane leiden over de functionaliteit en de specificaties van uw product. Met jarenlange ervaring op het gebied van het douanerecht is Wolfs Advocaten uitermate geschikt u te voorzien van passend juridisch advies en ondersteuning."
+          }
+        }
+      },
+      {
+        "title": "Binding Tariff classification (BTI)",
+        "body": "In order to prevent Customs from establishing afterwards that an incorrect tariff code has been used, an importer can request a so-called 'binding tariff classification decision' (BTI) from Customs. In the Netherlands, the BTI is requested online from Customs Breda, Binding Tariff Information Team. The application is submitted online through the EU Customs Trader Portal.\n\nAlthough a BTI can provide an importer of goods with the desired certainty about the classification of the goods, applying for and having access to a BTI is not without risks. For example, the Combined Nomenclature (the classification of goods used by the European Union) may be changed or the European Court of Justice may issue a ruling that conflicts with the issued BTI. This also applies to a ruling by the national customs chamber in the Netherlands. In such cases, Customs will declare the BTI invalid.\n\nWolfs Advocaten is more than happy to advise and assist you with the application and any disputes that may arise.",
+        "position": "detail",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Bindende tariefindeling (BTI)",
+            "body": "Om als importeur te voorkomen dat achteraf door de Douane wordt vastgesteld dat er een foutieve goederencode is gebruikt, kan een importeur een zogeheten ‘beschikking bindende tariefindeling’ (BTI) aanvragen bij de Douane. In Nederland wordt de BTI online aangevraagd bij de Douane Breda, Team Bindende Tariefinlichtingen. De aanvraag wordt online ingediend via het EU Customs Trader Portal.\n\nHoewel een BTI een importeur van goederen de gewenste zekerheid kan verschaffen over de indeling van de goederen, gaat het aanvragen van en de beschikking hebben over een BTI niet gepaard zonder risico’s. Zo kan het voorkomen dat de Gecombineerde Nomenclatuur (de door de Europese Unie gehanteerde indeling van goederen) wordt veranderd of dat het Europees Hof van Justitie een uitspraak doet die strijdig is met de afgegeven BTI. Dit geldt ook voor een uitspraak van de nationale douanekamer in Nederland. In dat soort gevallen zal de Douane de BTI ongeldig verklaren, met alle gevolgen van dien.\n\nWolfs Advocaten voorziet u graag van advies over en ondersteuning bij de aanvraag en de geschillen die zich voor zouden kunnen doen."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "slug": "commercial-advice-litigation",
+    "source": "https://www.wolfsadvocaten.nl/commercial-advice-and-litigation",
+    "detail_image": "practice/details/commercial-advice-and-litigation-1.jpg",
+    "secondary_image": "practice/details/commercial-advice-and-litigation-2.jpg",
+    "sections": [
+      {
+        "title": "Commercial disputes",
+        "body": "A commercial dispute can be settled in various ways. Think of conducting (intensive) negotiations and reaching a (favorable) settlement, entering into (summary) proceedings with the competent authority or conducting arbitrations.\n\nWolfs Advocaten has extensive experience in settling commercial disputes. When initiating a procedure, Wolfs Advocaten first examines whether it is desirable at all.\n\nWolfs Advocaten is also familiar with conducting arbitration proceedings. In this respect, John Wolfs' experience as an arbitrator comes in handy.",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Commerciële geschillen",
+            "body": "Een commercieel geschil kan op verschillende manieren beslecht worden. Denk aan het voeren van (intensieve) onderhandelingen en het bereiken van een (gunstige) schikking, het voeren van een (kort geding) procedure bij de bevoegde instantie of het voeren van arbitrages.\n\nWolfs Advocaten heeft ruime ervaring met het beslechten van commerciële geschillen. Bij het voeren van een procedure wordt door Wolfs Advocaten eerst bekeken of dit überhaupt wenselijk is.\n\nOok is Wolfs Advocaten bekend met het voeren van arbitrages. De ervaring van John Wolfs als arbiter komt daarbij goed van pas."
+          }
+        }
+      },
+      {
+        "title": "National and international",
+        "body": "Wolfs Advocaten represents the interests of parties in both national and international disputes. If the case has an international angle or if proceedings have to take place abroad, Wolfs Advocaten works closely together with lawyers from its international network. Wolfs Advocaten is a member of IR Global, a worldwide network in which many different international expertises are combined.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Nationaal en internationaal",
+            "body": "Wolfs Advocaten behartigt de belangen van partijen in zowel nationale als internationale geschillen. Als de zaak een internationale invalshoek kent of in het buitenland geprocedeerd moet worden, werkt Wolfs Advocaten nauw samen met advocaten uit haar internationale netwerk. Wolfs Advocaten is onder meer aangesloten bij IR Global, een wereldwijd netwerk waarin veel verschillende internationale expertises zijn gebundeld."
+          }
+        }
+      },
+      {
+        "title": "Advice",
+        "body": "Wolfs Advocaten mediates, negotiates, litigates and advises.\n\nA dispute is of course always better to be avoided. Since the agreements between parties are often decisive for the outcome of a dispute, Wolfs Advocaten is also often involved in the creation of those agreements. This ranges from drafting the agreement to advising on the content of the agreement, all from (of course) a commercial approach.\n\nOften the parties determine which law applies to the agreement. If parties were to decide that another law than Dutch law should apply to the agreement, Wolfs Advocaten is at your disposal with its international network to advise on foreign law.\n\nAdvice can also consist of advising the client how best to handle the dispute without the intervention of a lawyer. This is sometimes better for the commercial relationship between the parties. Wolfs Advocaten is happy to think along with you.",
+        "position": "detail",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Advisering",
+            "body": "Wolfs Advocaten bemiddelt, onderhandelt, procedeert, en adviseert.\n\nEen geschil kan natuurlijk altijd beter voorkomen worden. Aangezien de afspraken tussen partijen vaak bepalend zijn voor de uitkomst van een geschil, is Wolfs Advocaten ook vaak al dan niet op de achtergrond betrokken bij de totstandkoming van die afspraken in een overeenkomst. Dit varieert van het opstellen van de overeenkomst tot advisering over de inhoud van de overeenkomst, alles vanuit (uiteraard) een commerciële benadering.\n\nVeelal wordt tussen partijen afgesproken welk recht van toepassing is op de overeenkomst. Wanneer partijen wensen af te spreken dat een ander recht dan Nederlands recht van toepassing is op de overeenkomst, staat Wolfs Advocaten klaar met haar internationale netwerk zodat ook over het buitenlandse recht geadviseerd kan worden.\n\nAdvisering kan ook bestaan uit het adviseren van de cliënt hoe het geschil het beste aan te vliegen zonder de tussenkomst van een advocaat. Dat is soms beter voor de commerciële relatie tussen partijen. Wolfs Advocaten denkt dan graag mee."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "slug": "corporate-advice-litigation",
+    "source": "https://www.wolfsadvocaten.nl/corporate-advice-and-litigation",
+    "detail_image": "practice/details/corporate-advice-and-litigation-1.jpg",
+    "secondary_image": "practice/details/corporate-advice-and-litigation-2.jpg",
+    "sections": [
+      {
+        "title": "Corporate disputes",
+        "body": "Wolfs Advocaten has extensive experience in corporate law disputes. These include disputes between directors, shareholders and supervisory directors of the company. Wolfs Advocaten strives to settle corporate disputes in the manner most desirable for you.",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Ondernemingsrechtelijke geschillen",
+            "body": "Wolfs Advocaten heeft ruime ervaring in ondernemingsrechtelijke geschillen. Hierbij valt te denken aan geschillen tussen bestuurders, aandeelhouders en commissarissen van de onderneming. Wolfs Advocaten streeft ernaar ondernemingsrechtelijke geschillen te beslechten op de voor u meest wenselijke manier."
+          }
+        }
+      },
+      {
+        "title": "Shareholders dispute",
+        "body": "Disrupted relationships between shareholders can cause great damage to (the continuity of) the company. Business operations, decision-making and cooperation can come under pressure or even become impossible.\n\nIt is of course always better to avoid a dispute. In this regard, Wolfs Advocaten is regularly asked to draw up a dispute settlement which can be included in the articles of association of the company. A shareholder agreement can also be drawn up.\n\nIn the absence of a dispute settlement in the articles of association or a shareholders' agreement, Wolfs Advocaten is more than happy to assist you in any legal proceedings that may arise.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Aandeelhoudersgeschil",
+            "body": "Verstoorde verhoudingen tussen aandeelhouders kunnen grote schade opleveren voor (de continuïteit van) de onderneming. Zo kan de bedrijfsvoering, besluitvorming en samenwerking onder druk komen te staan of zelfs onmogelijk worden.\n\nEen geschil kan natuurlijk altijd beter voorkomen worden. Wolfs Advocaten wordt daarom regelmatig ingeschakeld om een geschillenregeling op te stellen die kan worden opgenomen in de statuten van de onderneming. Ook kan een aandeelhoudersovereenkomst worden opgesteld.\n\nBij het ontbreken van een geschillenregeling in de statuten of een aandeelhoudersovereenkomst, staat Wolfs Advocaten u graag bij in een gerechtelijke procedure."
+          }
+        }
+      },
+      {
+        "title": "Inquiry procedure",
+        "body": "The inquiry procedure is conducted before the Corporate Chamber of the Amsterdam Court of Appeal and concerns the policy conducted by the company. The proceedings focus on the question whether there is mismanagement.\n\nThanks to its knowledge in the field of enquiry law, Wolfs Advocaten is ideally suited to assist you in the proceedings.",
+        "position": "detail",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Enquêteprocedure",
+            "body": "De enquêteprocedure wordt gevoerd voor de Ondernemingskamer van het Gerechtshof te Amsterdam die ziet op het door de onderneming gevoerde beleid. In de procedure staat de vraag centraal of er sprake is van wanbeleid.\n\nDankzij haar kennis op het gebied van het enquêterecht is Wolfs Advocaten uitermate geschikt om u bij te staan in de procesvoering."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "slug": "liability-law-and-insurance-law",
+    "source": "https://www.wolfsadvocaten.nl/insurance",
+    "detail_image": "practice/details/insurance-1.jpg",
+    "secondary_image": "practice/details/insurance-2.jpg",
+    "sections": [
+      {
+        "title": "Liability law",
+        "body": "Company fires, cargo theft, (medical) errors and industrial accidents. These topics are in the news almost daily.\n\nThe key question is often which party can be held liable for the damages caused by that one industrial accident, for example: can the employer be held liable or must the employee bear his own damages? Or take a cargo theft during transport: is it the carrier who is liable for the damages resulting from the cargo theft?\n\nAnd what about the situation where a party has given goods for safekeeping (for storage, for example) to another party and a fire breaks out, resulting in the loss of the goods?\n\nYou may also face a liability issue privately. Think of a contractor who did not do the remodeling work properly, an (insurance) intermediary who did not advise you properly causing you to be under insured, or a product that is flawed causing damage. Or perhaps you have been held personally liable as a director of a company.\n\nThe basic principle in liability law is that each person bears his or her own damages. But there is an exception to the aforementioned rule. Hence the sentence \"Each shall bear his own damages unless...\". Liability law regulates which party can be sued and answers the question of whether that party should compensate for the damages.",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Aansprakelijkheidsrecht",
+            "body": "Bedrijfsbranden, ladingdiefstal, (medische) fouten en bedrijfsongevallen. Deze onderwerpen zijn bijna dagelijks in het nieuws.\n\nDe kernvraag is vaak welke partij er aansprakelijk kan worden gehouden voor de schade die is ontstaan door bijvoorbeeld dat ene bedrijfsongeval: kan de werkgever aansprakelijk worden gehouden of moet de werknemer zijn eigen schade dragen? Of neem een ladingdiefstal tijdens het transport: is het dan de vervoerder die aansprakelijk is voor de schade die uit de ladingdiefstal voortvloeit?\n\nEn hoe zit het bij de situatie dat een partij goederen in bewaring (bijvoorbeeld voor opslag) heeft gegeven aan een andere partij en er brand uitbreekt waardoor de goederen verloren zijn gegaan?\n\nOok in privé kunt u te maken krijgen met een aansprakelijkheidskwestie. Denk aan een aannemer die de verbouwingswerkzaamheden niet goed heeft uitgevoerd, een (assurantie)tussenpersoon die u niet goed heeft geadviseerd waardoor u onderverzekerd bent of een product dat gebrekkig is waardoor schade is ontstaan. Of misschien bent u als bestuurder van een onderneming wel persoonlijk aansprakelijk gesteld.\n\nUitgangspunt in het aansprakelijkheidsrecht is dat ieder zijn eigen schade draagt. Maar voornoemde regel kent een tenzij: “Ieder draagt zijn eigen schade, tenzij…” Het aansprakelijkheidsrecht regelt welke partij aangesproken kan worden en geeft antwoord op de vraag of deze partij de schade dient te vergoeden."
+          }
+        }
+      },
+      {
+        "title": "Liability requirements",
+        "body": "Several requirements must be met for a party to be held liable, depending on the type of liability. The most common grounds for liability are breach of contract and wrongful act.\n\nThe foregoing already showed that there must be damages in each case. In all cases, that damage must result from the event on which the liability is based. This is referred to as the causal relationship. The damage must be causally related to the act or event on which the liability is based. In practice, the question of whether there is such a causal connection frequently results in discussions. For Wolfs Advocaten this is familiar territory. Wolfs Advocaten's lawyers litigate about this on a regular basis.\n\nThere are several other requirements that must be met. For example, the damage - which is causally related to the act or event on which the liability is based - must also be attributable to the liable party. If this is not the case, for example because the damage was caused by a circumstance beyond the control of the liable party, the damage also does not have to be compensated.\n\nIn short: the question of whether a party is liable depends on all the circumstances of the case at hand. Wolfs Advocaten advises on the legal (im)possibilities and looks at the case from all angles.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Eisen aansprakelijkheid",
+            "body": "Er moet voldaan zijn aan verschillende eisen om een partij aansprakelijk te kunnen stellen, afhankelijk van de soort aansprakelijkheid. De meest gangbare aansprakelijkheidsgronden zijn wanprestatie en de onrechtmatige daad.\n\nHet voorgaande liet al zien dat er in ieder geval sprake moet zijn van schade. In alle gevallen moet die schade het gevolg zijn van de schadeveroorzakende gebeurtenis. Dit wordt ook wel het causale verband genoemd. De schade moet in causaal verband staan met de handeling of gebeurtenis waarop de aansprakelijkheid is gebaseerd. In de praktijk levert de vraag of er sprake is van zo een causaal verband veelvuldig discussies op. Voor Wolfs Advocaten is dit bekend terrein. Hierover wordt door de advocaten van Wolfs Advocaten vaker geprocedeerd.\n\nEn zo zijn er nog wat vereisten waaraan voldaan moet worden. Zo moet de schade – die in causaal verband staat met de handeling of gebeurtenis waarop de aansprakelijkheid is gebaseerd – ook kunnen worden toegerekend aan de aansprakelijke partij. Wanneer dat niet het geval is, bijvoorbeeld omdat de schade is ontstaan door een omstandigheid die buiten de invloedssfeer van de aansprakelijke partij lag, hoeft de schade ook niet vergoed te worden.\n\nKortom: de vraag of een partij aansprakelijk is, is afhankelijk van alle omstandigheden van het betreffende geval. Wolfs Advocaten adviseert over de juridische (on)mogelijkheden en bekijkt de zaak vanuit alle invalshoeken."
+          }
+        }
+      },
+      {
+        "title": "Compensation",
+        "body": "If the damage was caused by another party and this party can be held liable, this does not always mean that this party can be held liable for all the damages. Agreements may have been made or general terms and conditions may have been agreed upon that contain an exclusion or limitation of liability.\n\nLiability law is thus also closely related to contract law: if agreements have been made between parties, these may determine the liability of the party and the amount of damages.",
+        "position": "intro",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Schadevergoeding",
+            "body": "Als de schade door een andere partij veroorzaakt is en deze partij kan worden aangesproken, betekent dit niet altijd dat deze partij ook aansprakelijk gehouden kan worden voor álle schade. Zo kunnen er bijvoorbeeld afspraken gemaakt zijn of kunnen er algemene voorwaarden overeengekomen zijn waarin een uitsluiting of een beperking van de aansprakelijkheid staat opgenomen.\n\nHet aansprakelijkheidsrecht houdt dus ook nauw verband met het contractenrecht: als er afspraken zijn gemaakt tussen partijen, kunnen deze bepalend zijn voor de aansprakelijkheid van de partij en voor de omvang van de schadevergoeding."
+          }
+        }
+      },
+      {
+        "title": "Insurance law",
+        "body": "The liable party may have liability insurance, for example the well-known AVB insurance (corporate liability insurance) or the D&O / BCA insurance (directors liability insurance). The policy and its terms and conditions determine whether the insurer will provide coverage and pay out. If there is coverage under this liability insurance policy, the insurer will normally proceed to pay the damages that are eligible for compensation in the particular case.\n\nBut it is not always necessary to recover damages from another party yourself. In some cases, the aggrieved party (the party who has suffered damages) may have recourse to its own insurance, such as transportation property insurance. If another party is liable for the damages compensated by the insurer, recourse can be taken by this insurer against (the insurer of) the liable party.\n\nWolfs Advocaten also advises, mediates and litigates on insurance law issues regarding liability. She represents the interests of insurers, the liable party and the injured party.",
+        "position": "detail",
+        "order": 3,
+        "translations": {
+          "nl": {
+            "title": "Verzekeringsrecht",
+            "body": "De aansprakelijke partij kan een aansprakelijkheidsverzekering hebben, bijvoorbeeld de bekende AVB-verzekering of de D&O (Directors & Officers) / BCA-verzekering. De polis en de polisvoorwaarden zijn bepalend voor de vraag of de verzekeraar overgaat tot het verlenen van dekking en uitkering. Als er sprake is van dekking onder deze aansprakelijkheidsverzekering, zal de verzekeraar normaal gesproken overgaan tot uitkering voor zover de schade in het betreffende geval voor vergoeding in aanmerking komt.\n\nMaar het is niet altijd nodig om zelf de geleden schade te verhalen op een andere partij. In sommige gevallen kan door de benadeelde partij (de partij die schade heeft geleden) een beroep worden gedaan op een eigen verzekering, bijvoorbeeld een transportgoederenverzekering. Als een andere partij aansprakelijk is voor de schade die de verzekeraar uitkeert, kan door deze verzekeraar regres worden genomen op (de verzekeraar van) de aansprakelijke partij.\n\nWolfs Advocaten adviseert, bemiddelt en procedeert ook over de verzekeringsrechtelijke vraagstukken omtrent aansprakelijkheid. Zij behartigt de belangen van verzekeraars, de aansprakelijk gestelde partij en de benadeelde partij."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "slug": "cannabis-law",
+    "source": "https://www.wolfsadvocaten.nl/cannabis",
+    "detail_image": "practice/details/cannabis-1.jpg",
+    "secondary_image": "practice/details/cannabis-2.jpg",
+    "sections": [
+      {
+        "title": "Topics",
+        "body": "The popularity of the business of trading cannabis has grown tremendously over the years. More and more entrepreneurs are cashing in and partaking in this lucrative trade.\n\nPartaking is not without its challenges. For example, problems may arise in establishing the cannabis-trading company. Problems may also arise in advertising the product. Finally, disputes may arise between dealers themselves or between the dealer and other third parties involved in the cannabis trade (such as Customs).",
+        "position": "intro",
+        "order": 0,
+        "translations": {
+          "nl": {
+            "title": "Onderwerpen",
+            "body": "De populariteit van de handel in cannabis is in de loop der jaren enorm toegenomen. Steeds meer ondernemers slaan hun slag en nemen deel aan deze lucratieve handel.\n\nDeelname gaat niet zonder slag of stoot. Zo kunnen zich problemen voordoen bij de oprichting van de in cannabis handelende onderneming. Ook kunnen er problemen ontstaan bij het adverteren van het product. Tot slot kan een geschil ontstaan tussen de handelaren onderling of tussen de handelaar en andere bij de handel in cannabis betrokken derden (zoals de Douane)."
+          }
+        }
+      },
+      {
+        "title": "Corporate law",
+        "body": "When establishing a company dealing in cannabis, corporate law comes into play. Wolfs Advocaten has extensive knowledge in the field of corporate law. Many clients have been assisted by Wolfs Advocaten in virtually every aspect of establishing a company. This includes drafting agreements or giving advice on the various forms of business.",
+        "position": "intro",
+        "order": 1,
+        "translations": {
+          "nl": {
+            "title": "Ondernemingsrecht",
+            "body": "Bij het oprichten van een in cannabis handelende onderneming komt het ondernemingsrecht om de hoek kijken. Wolfs Advocaten beschikt over ruime kennis op het gebied van het ondernemingsrecht. Veel cliënten zijn door Wolfs Advocaten geholpen bij vrijwel elk aspect van de oprichting van een onderneming. Denk hierbij aan het opstellen van overeenkomsten of het geven van advies over de verschillende ondernemingsvormen."
+          }
+        }
+      },
+      {
+        "title": "Advertising",
+        "body": "For the entrepreneur, it is very important that the marketed product is presented to the consumer in the most attractive way. The applicable laws and regulations should not be overlooked in this regard. Failure to meet labeling requirements or making health claims can have serious legal consequences.\n\nWolfs Advocaten has extensive knowledge of the relevant laws and regulations. For several years now, Wolfs Advocaten has supported its clients in the advertising and marketing of cannabis products.",
+        "position": "intro",
+        "order": 2,
+        "translations": {
+          "nl": {
+            "title": "Adverteren",
+            "body": "Voor de ondernemer is het van groot belang dat het op de markt gebrachte product op de meest aantrekkelijke wijze aan de consument wordt gepresenteerd. De toepasselijke wet- en regelgeving moet hierbij niet uit het oog worden verloren. Zo kan het niet voldoen aan de eisen voor etikettering of het maken van gezondheidsclaims ernstige juridische gevolgen hebben.\n\nWolfs Advocaten beschikt over ruime kennis van de betreffende wet- en regelgeving. Al meerdere jaren ondersteunt Wolfs Advocaten haar cliënten bij het adverteren en op de markt brengen van cannabis producten."
+          }
+        }
+      },
+      {
+        "title": "Disputes",
+        "body": "When a party involved in the cannabis trade fails to comply with certain contractual agreements, serious damage can occur. This may give rise to the question of who is liable for these damages. To this end, it is important to determine which law applies to the agreement entered into between the parties. Wolfs Advocaten, with its knowledge of national and international law, is uniquely qualified to advise you.",
+        "position": "detail",
+        "order": 3,
+        "translations": {
+          "nl": {
+            "title": "Geschillen",
+            "body": "Wanneer een bij de handel in cannabis betrokken partij bepaalde contractuele afspraken niet nakomt, kan dit ernstige schade opleveren. Dit kan de vraag doen opkomen wie voor deze schade aansprakelijk is. Daarvoor is het onder meer van belang vast te stellen welk recht van toepassing is op de tussen partijen gesloten overeenkomst. Wolfs Advocaten is met haar kennis van het nationaal en internationaal recht bij uitstek geschikt om u van advies te voorzien."
+          }
+        }
+      }
+    ]
+  }
+]

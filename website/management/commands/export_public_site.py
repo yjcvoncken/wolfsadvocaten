@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core import serializers
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import FileField
-from website.models import AboutSection, BlogPost, ContentBlock, ContentPage, PracticeArea, SitePhoto, SiteSettings, TeamMember
+from website.models import AboutSection, BlogPost, ContentBlock, ContentPage, PracticeArea, PracticeAreaSection, SitePhoto, SiteSettings, TeamMember
 
 
 class Command(BaseCommand):
@@ -15,6 +15,7 @@ class Command(BaseCommand):
         root = Path(__file__).resolve().parents[2] / 'data'
         collections = [SiteSettings.objects.all(), SitePhoto.objects.all(),
             TeamMember.objects.filter(published=True), PracticeArea.objects.filter(published=True),
+            PracticeAreaSection.objects.filter(area__published=True),
             BlogPost.objects.filter(published=True), ContentPage.objects.filter(published=True),
             AboutSection.objects.filter(published=True),
             ContentBlock.objects.filter(published=True, page__published=True)]

@@ -1,0 +1,9 @@
+.post-share{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:36px;padding-top:12px;border-top:1px solid #d6d6d6;color:#383838}
+.post-share a,.post-share button{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:12px;border:0;border-radius:3px;background:transparent;color:inherit;cursor:pointer}
+.post-share [hidden]{display:none}
+.post-share svg{width:18px;height:18px;fill:currentColor}
+.post-share a:hover,.post-share button:hover{color:var(--blue);background:#0b4b780a}
+.post-share a:focus-visible,.post-share button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.post-share-status{font-size:13px}
+.article-inline-link{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.article-inline-link:hover{color:var(--ink)}

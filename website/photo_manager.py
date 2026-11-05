@@ -22,7 +22,7 @@ PHOTO_MODELS = {
     'sitesettings': (SiteSettings, ('hero_image', 'about_image'), 'Home'),
     'sitephoto': (SitePhoto, ('image',), 'Site photos'),
     'teammember': (TeamMember, ('photo',), 'Team'),
-    'practicearea': (PracticeArea, ('image',), 'Practice areas'),
+    'practicearea': (PracticeArea, ('image', 'detail_image', 'secondary_image'), 'Practice areas'),
     'aboutsection': (AboutSection, ('image',), 'About us'),
     'contentpage': (ContentPage, ('image',), 'Pages'),
     'contentblock': (ContentBlock, ('image',), 'Page sections'),

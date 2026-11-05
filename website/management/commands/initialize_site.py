@@ -30,6 +30,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS('Initial public website content loaded.'))
         else:
             self.stdout.write('Existing website content preserved.')
+        call_command('seed_practice_details')
         username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
         password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
         if username and password:

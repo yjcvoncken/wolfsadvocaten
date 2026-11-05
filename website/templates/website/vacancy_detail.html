@@ -1,0 +1,14 @@
+{% extends 'website/remaining_base.html' %}{% load localization %}
+{% block title %}{{ page|localized:"title" }}{% endblock %}
+{% block pageclass %}legal-page vacancy-detail-page{% endblock %}
+{% block content %}
+<div class="reference-shell">
+  <article class="reference-panel legal-panel">
+    <h1>{{ page|localized:"title" }}</h1>
+    <div class="legal-copy">
+      {{ page|localized:"body"|linebreaks }}
+      {% if page.document %}<a class="round-link" href="{{ page.document.url }}" target="_blank" rel="noopener">{% tr "OPEN DOCUMENT" %}</a>{% endif %}
+    </div>
+  </article>
+</div>
+{% endblock %}
