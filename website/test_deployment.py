@@ -13,6 +13,26 @@ from .models import BlogPost, ContentPage, SiteSettings, TeamMember
 
 
 class DeploymentTests(TestCase):
+    def test_production_domain_works_without_railway_domain_variables(self):
+        import os
+        import runpy
+        from unittest.mock import patch
+        ContentPage.objects.create(slug='vacancies', title='Vacancies', published=True)
+        environment = {
+            'DJANGO_DEBUG': '0', 'DJANGO_SECRET_KEY': 'test-only-secret',
+            'DJANGO_ALLOWED_HOSTS': 'localhost,127.0.0.1',
+        }
+        with patch.dict(os.environ, environment, clear=True):
+            config = runpy.run_path(str(Path(__file__).resolve().parents[1] / 'config/settings.py'))
+        domain = 'wolfsadvocaten-production.up.railway.app'
+        self.assertIn(domain, config['ALLOWED_HOSTS'])
+        self.assertNotIn('*', config['ALLOWED_HOSTS'])
+        self.assertNotIn('.up.railway.app', config['ALLOWED_HOSTS'])
+        with self.settings(ALLOWED_HOSTS=config['ALLOWED_HOSTS'], DEBUG=False):
+            for path in ('/vacancies/', '/nl/vacancies/'):
+                self.assertEqual(self.client.get(path, HTTP_HOST=domain, secure=True).status_code, 200)
+            self.assertEqual(self.client.get('/vacancies/', HTTP_HOST='unrelated.up.railway.app', secure=True).status_code, 400)
+
     def test_portrait_upgrade_updates_existing_database_and_copies_media(self):
         member = TeamMember.objects.create(name='John Wolfs', role='Edited role', photo='team/old.jpg')
         other = TeamMember.objects.create(name='Custom member', photo='team/custom.jpg')
