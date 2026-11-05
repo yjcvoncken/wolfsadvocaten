@@ -32,7 +32,9 @@ if not SECRET_KEY:
 
 ALLOWED_HOSTS = [host.strip() for host in os.environ.get(
     'DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',') if host.strip()]
-for domain in (os.environ.get('RAILWAY_PUBLIC_DOMAIN'), os.environ.get('RAILWAY_PRIVATE_DOMAIN'), 'healthcheck.railway.app'):
+# Keep the deployed public domain reachable if Railway does not inject its domain variable.
+for domain in (os.environ.get('RAILWAY_PUBLIC_DOMAIN'), os.environ.get('RAILWAY_PRIVATE_DOMAIN'),
+               'wolfsadvocaten-production.up.railway.app', 'healthcheck.railway.app'):
     if domain and domain not in ALLOWED_HOSTS:
         ALLOWED_HOSTS.append(domain)
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.environ.get(
@@ -154,8 +156,20 @@ STORAGES = {
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'Wolfs Advocaten <info@wolfsadvocaten.nl>')
 MAILERS = {
     'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        'BACKEND': os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend'
+                                 if os.environ.get('EMAIL_HOST') or not DEBUG
+                                 else 'django.core.mail.backends.console.EmailBackend'),
+        'OPTIONS': {
+            'host': os.environ.get('EMAIL_HOST', 'localhost'),
+            'port': int(os.environ.get('EMAIL_PORT', '587')),
+            'username': os.environ.get('EMAIL_HOST_USER', ''),
+            'password': os.environ.get('EMAIL_HOST_PASSWORD', ''),
+            'use_tls': os.environ.get('EMAIL_USE_TLS', '1') == '1',
+            'use_ssl': os.environ.get('EMAIL_USE_SSL', '0') == '1',
+            'timeout': 10,
+        },
     },
 }
