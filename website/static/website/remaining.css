@@ -17,7 +17,7 @@
 .reference-practice-card p{font:var(--copy)/1.6 WolfsLight,Helvetica,sans-serif;margin:0;width:99%}
 .reference-practice-card:hover h2{color:#004d7e}
 .blog-list{border-radius:0 0 20px 20px}.blog-list>h1{margin-bottom:70px}
-.reference-blog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;padding:0 20px}
+.reference-blog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;padding:0 20px}
 .reference-post{background:#f5eee4;overflow:hidden;min-width:0}.reference-post-photo{display:block;aspect-ratio:4/3}.reference-post-photo img{object-fit:cover}
 .reference-post-body{position:relative;height:320px;padding:70px 25px 25px}.reference-post-body time{position:absolute;left:25px;top:33px;font:12px/18px WolfsLight,Helvetica,sans-serif}
 .reference-post-body h2{font-size:25px;line-height:35px;letter-spacing:0;margin:0 0 16px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
