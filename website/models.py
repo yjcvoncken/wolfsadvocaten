@@ -41,7 +41,9 @@ class TeamMember(BilingualContent):
     show_on_about = models.BooleanField(default=True)
     class Meta:
         ordering = ['order', 'name']
-    def get_absolute_url(self): return reverse('content_page', args=[slugify(self.name)])
+    def get_absolute_url(self):
+        from .seo import model_path
+        return model_path('members', self.name, reverse('content_page', args=[slugify(self.name)]))
     def __str__(self): return self.name
 
 
@@ -60,7 +62,9 @@ class PracticeArea(BilingualContent):
     def save(self, *args, **kwargs):
         if not self.slug: self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-    def get_absolute_url(self): return reverse('practice_detail', args=[self.slug])
+    def get_absolute_url(self):
+        from .seo import model_path
+        return model_path('areas', self.slug, reverse('practice_detail', args=[self.slug]))
     def __str__(self): return self.title
 
 
@@ -93,7 +97,9 @@ class BlogPost(BilingualContent):
     def save(self, *args, **kwargs):
         if not self.slug: self.slug = slugify(self.title)[:250]
         super().save(*args, **kwargs)
-    def get_absolute_url(self): return reverse('blog_detail', args=[self.slug])
+    def get_absolute_url(self):
+        from .seo import model_path
+        return model_path('posts', self.slug, reverse('original_post', args=[self.slug]))
     def __str__(self): return self.title
 
 
@@ -106,7 +112,9 @@ class ContentPage(BilingualContent):
     document_nl = models.FileField(max_length=500, upload_to='documents/', blank=True, verbose_name='Document (Dutch)')
     document = models.FileField(max_length=500, upload_to='documents/', blank=True, help_text='Optional PDF or document linked from this page.')
     published = models.BooleanField(default=True)
-    def get_absolute_url(self): return reverse('content_page', args=[self.slug])
+    def get_absolute_url(self):
+        from .seo import original_path
+        return original_path(reverse('content_page', args=[self.slug]))
     def __str__(self): return self.title
 
 

@@ -1,0 +1,5 @@
+{% if seo.canonical %}<link rel="canonical" href="{{ seo.canonical }}">{% endif %}
+{% for alternate in seo.alternates %}<link rel="alternate" hreflang="{{ alternate.hreflang }}" href="{{ alternate.href }}">{% endfor %}
+{% if seo.robots %}<meta name="robots" content="{{ seo.robots }}">{% endif %}
+{% for tag in seo.meta %}<meta {% if tag.property %}property="{{ tag.property }}"{% else %}name="{{ tag.name }}"{% endif %} content="{{ tag.content }}">{% endfor %}
+{% for structured in seo.structured_json %}<script type="application/ld+json">{{ structured }}</script>{% endfor %}

@@ -104,7 +104,7 @@
  .vacancy-detail-page .legal-copy{font-size:16px;line-height:1.6}
  /* Article navigation clears the mobile header and stays within the page. */
  body .article-detail{min-height:0}
- body .article-detail .article-categories{height:auto;min-height:0;padding-top:130px;padding-bottom:25px;gap:20px;font-size:13px}
+ body .article-detail .article-categories{overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap;white-space:nowrap;height:auto;min-height:0;padding-top:130px;padding-bottom:25px;gap:20px;font-size:13px}
  body .article-detail .article-content{padding-top:15px}
  body .article-detail .article-content h1{font-size:clamp(26px,7vw,30px);line-height:1.2}
  body .article-detail .readable{font-size:16px;line-height:1.6}

@@ -20,6 +20,11 @@ def context(**kwargs):
     legal = {page.slug: page for page in ContentPage.objects.filter(
         slug__in=('terms-and-conditions', 'privacy-statement'), published=True)}
     def document_link(slug):
+        from .seo import inventory
+        language = 'nl' if (get_language() or '').startswith('nl') else 'en'
+        for path, record in inventory()['files'].items():
+            if record['kind'] == slug and record['language'] == language:
+                return path
         page = legal.get(slug)
         document = page.document_nl if page and (get_language() or '').startswith('nl') and page.document_nl else (page.document if page else None)
         return document.url if document else reverse('content_page', args=[slug])
@@ -74,7 +79,10 @@ def practice_detail(request, slug):
     ))
 
 def blog(request):
-    posts = Paginator(BlogPost.objects.filter(published=True), 6).get_page(request.GET.get('page'))
+    number = getattr(request, 'legacy_seo', None) or {}
+    posts = Paginator(BlogPost.objects.filter(published=True), 6).get_page(number.get('page') or request.GET.get('page'))
+    if number.get('page') and posts.number != number['page']:
+        raise Http404
     return render(request, 'website/blog.html', context(posts=posts))
 
 def blog_detail(request, slug):
@@ -104,7 +112,8 @@ def contact(request):
             logging.getLogger(__name__).exception(
                 'Could not email contact submission %s; retained in admin', submission.pk)
         messages.success(request, translate('Thank you. Your message has been received.'))
-        return redirect('contact')
+        from .seo import original_path
+        return redirect(original_path(reverse('contact')))
     return render(request, 'website/contact.html', context(form=form))
 
 def content_page(request, slug):
@@ -140,6 +149,16 @@ def switch_language(request):
     from django.utils.translation import get_language_from_path, override
     from django.views.i18n import set_language
     next_url = request.POST.get('next', request.GET.get('next', '/'))
+    from .seo import translated_path
+    language = request.POST.get('language')
+    if request.method == 'POST' and language in dict(django_settings.LANGUAGES):
+        request.POST = request.POST.copy()
+        request.POST['next'] = translated_path(next_url, language)
+        next_url = request.POST['next']
     source_language = get_language_from_path(urlsplit(next_url).path) or django_settings.LANGUAGE_CODE
     with override(source_language):
-        return set_language(request)
+        response = set_language(request)
+    if response.has_header('Location'):
+        from .seo import original_path
+        response['Location'] = original_path(response['Location'])
+    return response

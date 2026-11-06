@@ -1,3 +1,4 @@
+from .seo import original_path
 from io import StringIO
 from importlib import import_module
 from types import SimpleNamespace
@@ -30,7 +31,7 @@ class DeploymentTests(TestCase):
         self.assertNotIn('.up.railway.app', config['ALLOWED_HOSTS'])
         with self.settings(ALLOWED_HOSTS=config['ALLOWED_HOSTS'], DEBUG=False):
             for path in ('/vacancies/', '/nl/vacancies/'):
-                self.assertEqual(self.client.get(path, HTTP_HOST=domain, secure=True).status_code, 200)
+                self.assertEqual(self.client.get(original_path(path), HTTP_HOST=domain, secure=True).status_code, 200)
             self.assertEqual(self.client.get('/vacancies/', HTTP_HOST='unrelated.up.railway.app', secure=True).status_code, 400)
 
     def test_portrait_upgrade_updates_existing_database_and_copies_media(self):
@@ -83,7 +84,7 @@ class DeploymentTests(TestCase):
             self.assertEqual(TeamMember.objects.count(), count)
             self.assertEqual(original_media.read_bytes(), b'Keep replacement media')
             for path in ('/', '/nl/', '/vacancies/', '/nl/vacancies/'):
-                self.assertEqual(self.client.get(path).status_code, 200)
+                self.assertEqual(self.client.get(original_path(path)).status_code, 200)
 
     def test_existing_partial_site_is_not_overwritten(self):
         SiteSettings.objects.create(tagline='My existing website')

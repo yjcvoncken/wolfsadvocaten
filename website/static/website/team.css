@@ -38,5 +38,5 @@ body .team-card--gino-di-antonio{--portrait-position:50% 10%}
 }
 
 /* Internal profile references throughout public page content. */
-main a.profile-mention,main a.profile-mention:hover,main a.article-inline-link[href$="/john-wolfs/"]{color:inherit;font:inherit;text-decoration:none}
+main a.profile-mention,main a.profile-mention:hover,main a.article-inline-link[href$="/john-wolfs"],main a.article-inline-link[href$="/john-wolfs/"]{color:inherit;font:inherit;text-decoration:none}
 main a.profile-mention:focus-visible{outline:2px solid currentColor;outline-offset:3px}

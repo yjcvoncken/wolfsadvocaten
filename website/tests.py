@@ -1,6 +1,11 @@
 from datetime import date
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse as django_reverse
+from .seo import original_path
+
+def reverse(*args, **kwargs):
+    return original_path(django_reverse(*args, **kwargs))
+
 from .models import AboutSection, TeamMember, BlogPost, ContactSubmission, PracticeArea
 
 class WebsiteTests(TestCase):
@@ -14,7 +19,7 @@ class WebsiteTests(TestCase):
         ContentBlock.objects.create(page=listing, title=detail.title, link='/new-attorney/')
         for language, prefix, label in (('en', '', 'About us'), ('nl', '/nl', 'Over ons')):
             activate(language)
-            overview = self.client.get(prefix + '/vacancies/')
+            overview = self.client.get(prefix + '/vacancies')
             response = self.client.get(prefix + '/new-attorney/')
             self.assertTemplateUsed(response, 'website/vacancy_detail.html')
             for page in (overview, response):
@@ -36,8 +41,8 @@ class WebsiteTests(TestCase):
         response = self.client.get(page.get_absolute_url())
         self.assertContains(response, f'<a class="profile-mention" href="{john.get_absolute_url()}">John Wolfs</a>', count=2)
         response = self.client.get('/nl' + page.get_absolute_url())
-        self.assertContains(response, 'class="profile-mention" href="/nl/john-wolfs/"', count=2)
-        response = self.client.get('/john-wolfs/')
+        self.assertContains(response, 'class="profile-mention" href="/nl/john-wolfs"', count=2)
+        response = self.client.get('/john-wolfs')
         self.assertNotContains(response, 'class="profile-mention"')
 
     def test_profile_links_preserve_existing_links_attributes_and_escaping(self):
@@ -126,7 +131,7 @@ class WebsiteTests(TestCase):
         self.assertContains(response, '<p>Customs law overview.</p>', html=True)
         self.assertContains(response, '&lt;script&gt;alert(1)&lt;/script&gt;')
         response = self.client.get('/nl' + post.get_absolute_url())
-        self.assertContains(response, 'href="/nl/john-wolfs/">John Wolfs</a>')
+        self.assertContains(response, 'href="/nl/john-wolfs">John Wolfs</a>')
         self.assertContains(response, '>douanerecht</a>')
         member.published = False
         member.save()
@@ -207,7 +212,7 @@ class WebsiteTests(TestCase):
         for number in range(7):
             BlogPost.objects.create(title=f'Article {number}', body='Article body', published_at=date.today(), published=True)
         first = self.client.get(reverse('blog'))
-        second = self.client.get(reverse('blog'), {'page': 2})
+        second = self.client.get('/blog/page/2')
         self.assertEqual(len(first.context['posts']), 6)
         self.assertEqual(len(second.context['posts']), 1)
         self.assertContains(first, 'aria-label="Next page"')
@@ -222,14 +227,17 @@ class WebsiteTests(TestCase):
         from .models import ContentPage
         for slug in ('terms-and-conditions', 'privacy-statement'):
             page = ContentPage.objects.create(slug=slug, title=slug, document=f'documents/{slug}.pdf')
-            self.assertRedirects(self.client.get(page.get_absolute_url()), page.document.url, fetch_redirect_response=False)
-            self.assertContains(self.client.get(reverse('home')), f'href="{page.document.url}" target="_blank" rel="noopener"')
+            response = self.client.get(page.get_absolute_url())
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response['Content-Type'], 'application/pdf')
+            response.close()
+            self.assertContains(self.client.get(reverse('home')), f'href="{page.get_absolute_url()}" target="_blank" rel="noopener"')
         for slug in ('disclaimer', 'cookie-policy'):
             page = ContentPage.objects.create(slug=slug, title=slug, body='Original legal text')
             response = self.client.get(page.get_absolute_url())
             self.assertContains(response, page.body)
             self.assertTemplateUsed(response, 'website/legal_page.html')
-        self.assertContains(self.client.get('/terms-conditions/'), 'Original legal text')
+        self.assertContains(self.client.get('/terms-conditions'), 'Original legal text')
 
     def test_linkedin_is_available_in_footer_and_menu(self):
         from .models import SiteSettings
@@ -319,14 +327,14 @@ class WebsiteTests(TestCase):
         self.assertEqual(response.status_code, 302)
         vacancy = Vacancy.objects.get(title='New attorney vacancy')
         self.assertEqual(vacancy.page, page)
-        self.assertNotContains(self.client.get('/vacancies/'), vacancy.title)
+        self.assertNotContains(self.client.get('/vacancies'), vacancy.title)
         for action, visible in (('publish', True), ('unpublish', False), ('publish', True)):
             response = self.client.post(reverse('admin:website_vacancy_changelist'), {
                 'action': action, '_selected_action': str(vacancy.pk)})
             self.assertEqual(response.status_code, 302)
             vacancy.refresh_from_db()
             self.assertEqual(vacancy.published, visible)
-            public = self.client.get('/vacancies/')
+            public = self.client.get('/vacancies')
             if visible:
                 self.assertContains(public, vacancy.title)
                 self.assertContains(public, vacancy.body)
@@ -336,10 +344,10 @@ class WebsiteTests(TestCase):
                                     {'post': 'yes'})
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Vacancy.objects.filter(pk=vacancy.pk).exists())
-        self.assertNotContains(self.client.get('/vacancies/'), vacancy.title)
+        self.assertNotContains(self.client.get('/vacancies'), vacancy.title)
         existing.published = False
         existing.save()
-        self.assertContains(self.client.get('/vacancies/'), 'There are currently no open vacancies.')
+        self.assertContains(self.client.get('/vacancies'), 'There are currently no open vacancies.')
 
 
 class TranslationTests(TestCase):
@@ -355,37 +363,37 @@ class TranslationTests(TestCase):
         ContentBlock.objects.create(page=self.page, title='Associate attorney', body='Join us',
                                    link='/contact/', translations={'nl': {
                                        'title': 'Advocaat-medewerker', 'body': 'Kom bij ons werken'}})
-        english = self.client.get('/vacancies/')
-        dutch = self.client.get('/nl/vacancies/')
+        english = self.client.get('/vacancies')
+        dutch = self.client.get('/nl/vacancies')
         self.assertContains(english, '<html lang="en">')
         self.assertContains(english, 'Associate attorney')
         self.assertContains(dutch, '<html lang="nl">')
         self.assertContains(dutch, 'Werken bij ons')
         self.assertContains(dutch, 'Advocaat-medewerker')
         self.assertContains(dutch, 'Locatie:')
-        self.assertContains(dutch, 'href="/nl/contact/"')
+        self.assertContains(dutch, 'href="/nl/contact"')
         self.assertNotContains(dutch, 'https://www.wolfsadvocaten.nl/" lang="nl"')
-        self.assertContains(self.client.get('/nl/'), 'Recht voor ondernemers')
+        self.assertContains(self.client.get('/nl'), 'Recht voor ondernemers')
         self.assertContains(self.client.get('/'), 'Law for entrepreneurs')
 
     def test_language_switch_preserves_page_and_query_in_both_directions(self):
         response = self.client.post('/i18n/setlang/', {'language': 'nl', 'next': '/blog/?page=2'})
-        self.assertEqual(response.url, '/nl/blog/?page=2')
+        self.assertEqual(response.url, '/nl/blog/page/2')
         self.assertEqual(response.cookies['django_language'].value, 'nl')
         response = self.client.post('/i18n/setlang/', {'language': 'en', 'next': '/nl/blog/?page=2'})
-        self.assertEqual(response.url, '/blog/?page=2')
+        self.assertEqual(response.url, '/blog/page/2')
         self.assertEqual(response.cookies['django_language'].value, 'en')
         response = self.client.post('/i18n/setlang/', {'language': 'nl', 'next': 'https://other.example.com/'})
-        self.assertEqual(response.url, '/nl/')
+        self.assertEqual(response.url, '/nl')
 
     def test_contact_labels_validation_and_confirmation_in_dutch(self):
-        response = self.client.get('/nl/contact/')
+        response = self.client.get('/nl/contact')
         self.assertContains(response, 'Voornaam')
         self.assertContains(response, 'Achternaam')
         self.assertContains(response, 'VERZENDEN')
-        response = self.client.post('/nl/contact/', {'email': 'invalid'})
+        response = self.client.post('/nl/contact', {'email': 'invalid'})
         self.assertContains(response, 'Voer een geldig e-mailadres in.')
-        response = self.client.post('/nl/contact/', {
+        response = self.client.post('/nl/contact', {
             'first_name': 'Jan', 'last_name': 'Jansen', 'email': 'jan@example.com',
             'phone': '', 'message': 'Hallo'}, follow=True)
         self.assertContains(response, 'Bedankt. Uw bericht is ontvangen.')
@@ -394,9 +402,9 @@ class TranslationTests(TestCase):
         from .models import ContentPage
         page = ContentPage.objects.create(slug='terms-and-conditions', title='Terms',
                                          document='documents/en.pdf', document_nl='documents/nl.pdf')
-        self.assertRedirects(self.client.get('/terms-and-conditions/'), page.document.url, fetch_redirect_response=False)
-        self.assertRedirects(self.client.get('/nl/terms-and-conditions/'), page.document_nl.url, fetch_redirect_response=False)
-        self.assertContains(self.client.get('/nl/'), f'href="{page.document_nl.url}"')
+        self.assertRedirects(self.client.get('/terms-and-conditions'), '/_files/ugd/bff2b6_b7db59421ef44bf9a68f409ebc1a2547.pdf', status_code=301, fetch_redirect_response=False)
+        self.assertRedirects(self.client.get('/nl/terms-and-conditions'), '/nl/_files/ugd/bff2b6_7091aa1a064b449c87103ec1b5b259ab.pdf', status_code=301, fetch_redirect_response=False)
+        self.assertContains(self.client.get('/nl'), 'href="/nl/_files/ugd/bff2b6_7091aa1a064b449c87103ec1b5b259ab.pdf"')
 
     def test_admin_edit_dutch_vacancy_and_preserve_translation_on_bulk_publish(self):
         from django.contrib.auth import get_user_model
@@ -415,8 +423,8 @@ class TranslationTests(TestCase):
             'action': 'publish', '_selected_action': str(vacancy.pk)})
         vacancy.refresh_from_db()
         self.assertEqual(vacancy.translations['nl']['title'], 'Nieuwe functie')
-        self.assertContains(self.client.get('/nl/vacancies/'), 'Nieuwe functie')
-        self.assertContains(self.client.get('/vacancies/'), 'New role')
+        self.assertContains(self.client.get('/nl/vacancies'), 'Nieuwe functie')
+        self.assertContains(self.client.get('/vacancies'), 'New role')
 
     def test_all_public_templates_render_in_dutch(self):
         from .models import BlogPost, ContentPage, PracticeArea
@@ -427,15 +435,15 @@ class TranslationTests(TestCase):
         member = TeamMember.objects.create(name='John Example', role='Attorney')
         for slug in ('social-involvement', 'disclaimer', 'cookie-policy'):
             ContentPage.objects.create(slug=slug, title=slug)
-        paths = ('/', '/about-us/', '/team/', '/practice-areas/', '/blog/', '/contact/', '/vacancies/',
+        paths = ('/', '/about-us/', '/team/', '/practice-areas/', '/blog/', '/contact/', '/vacancies',
                  '/social-involvement/', '/disclaimer/', '/cookie-policy/', area.get_absolute_url(),
                  post.get_absolute_url(), member.get_absolute_url())
         for path in paths:
-            response = self.client.get('/nl' + path)
+            response = self.client.get(original_path('/nl' + path))
             self.assertEqual(response.status_code, 200, path)
             self.assertContains(response, '<html lang="nl">')
-        self.assertContains(self.client.get(f'/nl/blog/{post.slug}/'), 'Artikel')
-        self.assertContains(self.client.get(f'/nl/practice-areas/{area.slug}/'), 'Internationaal handelsrecht')
+        self.assertContains(self.client.get(original_path(f'/nl/post/{post.slug}')), 'Artikel')
+        self.assertContains(self.client.get(original_path(f'/nl/practice-areas/{area.slug}/')), 'Internationaal handelsrecht')
 
     def test_translation_seed_preserves_admin_edits_and_is_repeatable(self):
         from django.core.management import call_command

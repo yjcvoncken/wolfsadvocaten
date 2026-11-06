@@ -1,3 +1,4 @@
+from .seo import original_path
 from io import BytesIO
 from tempfile import TemporaryDirectory
 from django.contrib.auth import get_user_model
@@ -48,7 +49,7 @@ class PhotoManagerTests(TestCase):
         self.assertEqual(self.member.translations['nl']['role'], 'Advocaat')
         self.assertEqual(self.member.role, 'Attorney')
         for path in ('/', '/team/', '/about-us/', '/nl/', '/nl/team/', '/nl/about-us/'):
-            self.assertContains(self.client.get(path), self.member.photo.url)
+            self.assertContains(self.client.get(original_path(path)), self.member.photo.url)
 
     def test_crop_position_is_applied_on_server(self):
         for center, color in ((0, (255, 0, 0)), (1, (0, 0, 255))):
@@ -97,12 +98,12 @@ class PhotoManagerTests(TestCase):
         self.assertEqual(self.client.post(target, {'photo': image_file()}, HTTP_ACCEPT='application/json').status_code, 200)
         slot.refresh_from_db()
         for path in ('/', '/nl/'):
-            self.assertContains(self.client.get(path), slot.image.url)
+            self.assertContains(self.client.get(original_path(path)), slot.image.url)
         contact = SitePhoto.objects.get(key='contact_office')
         target = reverse('admin:website_photo_replace', args=('sitephoto', contact.pk, 'image'))
         self.client.post(target, {'photo': image_file()}, HTTP_ACCEPT='application/json')
         contact.refresh_from_db()
-        self.assertContains(self.client.get('/contact/'), contact.image.url)
+        self.assertContains(self.client.get('/contact'), contact.image.url)
 
     def test_upload_requires_csrf_token(self):
         protected = Client(enforce_csrf_checks=True)

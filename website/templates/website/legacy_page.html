@@ -1,0 +1,7 @@
+{% extends 'website/remaining_base.html' %}{% load localization %}
+{% block title %}{{ legacy_heading }}{% endblock %}
+{% block pageclass %}legal-page legacy-page{% endblock %}
+{% block content %}<div class="reference-shell"><article class="reference-panel legal-panel">
+  <h1>{{ legacy_heading }}</h1>
+  <div class="legal-copy">{% for paragraph in legacy_paragraphs %}{{ paragraph|linebreaks }}{% endfor %}</div>
+</article></div>{% endblock %}

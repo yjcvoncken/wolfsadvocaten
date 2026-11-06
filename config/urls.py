@@ -1,10 +1,13 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf.urls.i18n import i18n_patterns
-from website import views
+from website import views, seo
 from website.deployment import healthz, public_media
 
 urlpatterns = [
+    path('robots.txt', seo.robots_txt, name='robots'),
+    re_path(r'^(?P<filename>[^/]+\.xml)$', seo.sitemap, name='sitemap'),
+    re_path(r'^(?:nl/)?_files/ugd/(?P<filename>[^/]+\.pdf)$', seo.legacy_pdf, name='legacy_pdf'),
     path('healthz/', healthz, name='healthz'),
     path('media/<path:path>', public_media, name='public_media'),
     path('admin/', admin.site.urls),
@@ -12,6 +15,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('__legacy__/', seo.legacy_page, name='legacy_page'),
     path('', views.home, name='home'),
     path('about-us/', views.about, name='about'),
     path('team/', views.about, name='team'),

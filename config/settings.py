@@ -34,7 +34,8 @@ ALLOWED_HOSTS = [host.strip() for host in os.environ.get(
     'DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',') if host.strip()]
 # Keep the deployed public domain reachable if Railway does not inject its domain variable.
 for domain in (os.environ.get('RAILWAY_PUBLIC_DOMAIN'), os.environ.get('RAILWAY_PRIVATE_DOMAIN'),
-               'wolfsadvocaten-production.up.railway.app', 'healthcheck.railway.app'):
+               'wolfsadvocaten-production.up.railway.app', 'www.wolfsadvocaten.nl',
+               'wolfsadvocaten.nl', 'healthcheck.railway.app'):
     if domain and domain not in ALLOWED_HOSTS:
         ALLOWED_HOSTS.append(domain)
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.environ.get(
@@ -64,6 +65,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'website.seo.LegacyURLMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,6 +87,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'website.seo.seo_context',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],

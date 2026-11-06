@@ -33,3 +33,5 @@ body{font-family:WolfsRoman,Helvetica,Arial,sans-serif;color:#3b3a3a}
 .language-pill{box-shadow:0 3px 15px #0000000d}
 @media(max-width:750px){.menu-panel{width:100%;min-height:0;height:auto;padding:80px 35px 40px}.menu-panel nav{gap:18px}.menu-panel nav a{font-size:28px}.menu-close{top:30px;right:35px}}
 .menu-panel nav a:first-child{color:inherit}.menu-panel nav a[aria-current="page"]{color:#9bcbe9}
+
+@media(min-width:751px){.article-categories{flex-wrap:wrap;gap:15px 25px;align-content:center}}

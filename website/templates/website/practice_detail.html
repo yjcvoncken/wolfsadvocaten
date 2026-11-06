@@ -20,7 +20,7 @@
         {% for section in detail_sections %}<section><h2>{{ section|localized:"title" }}</h2>{{ section|localized:"body"|linebreaks }}</section>{% endfor %}
         <section class="practice-detail-contact">
           <h2>{% tr "Would you like to know more?" %}</h2>
-          <p>{% tr "Feel free to contact" %} <a href="{% if contact_member %}{{ contact_member.get_absolute_url }}{% else %}{% url 'contact' %}{% endif %}">{% if contact_member %}{{ contact_member.name }}{% else %}{% tr 'Contact us' %}{% endif %}</a>.</p>
+          <p>{% tr "Feel free to contact" %} <a href="{% if contact_member %}{{ contact_member.get_absolute_url }}{% else %}{% original_url 'contact' %}{% endif %}">{% if contact_member %}{{ contact_member.name }}{% else %}{% tr 'Contact us' %}{% endif %}</a>.</p>
         </section>
       </div>
       {% if area.secondary_image %}<div class="practice-detail-secondary"><img src="{{ area.secondary_image.url }}" alt="{{ area|localized:'title' }}" loading="lazy"></div>{% endif %}
