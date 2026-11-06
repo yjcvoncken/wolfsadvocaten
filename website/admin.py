@@ -14,9 +14,9 @@ class SiteSettingsAdmin(admin.ModelAdmin):
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
-    exclude = ('show_on_home', 'show_on_about')
-    list_display = ('name','role','email','order','published')
-    list_editable = ('order','published')
+    exclude = ('show_on_home',)
+    list_display = ('name','role','email','order','show_on_about','published')
+    list_editable = ('order','show_on_about','published')
     search_fields = ('name','role')
     list_filter = ('published',)
 

@@ -30,6 +30,26 @@ def home(request):
     return render(request, 'website/home.html', context(areas=PracticeArea.objects.filter(published=True), team=TeamMember.objects.filter(published=True), posts=BlogPost.objects.filter(published=True)[:6]))
 
 def about(request):
+    from django.templatetags.static import static
+    team = list(TeamMember.objects.filter(published=True, show_on_about=True))
+    original_order = {name: index for index, name in enumerate((
+        'John Wolfs', 'Maurice van Efferink', 'Joost van den Akker', 'Menno van Term',
+        'Ella Delanty', 'Romy Brüll', 'Vera Ubaghs',
+    ))}
+    team.sort(key=lambda member: original_order.get(member.name, len(original_order)))
+    original_portraits = {
+        'John Wolfs': ('website/images/about-team/john.png', {
+            'team/john.jpg', 'team/john-wolfs-reference-20261021.jpg',
+        }),
+        'Joost van den Akker': ('website/images/about-team/joost.png', {
+            'team/joost.jpg', 'team/joost-van-den-akker-reference-20261021.png',
+            'team/joost-van-den-akker-current-20261105.jpg',
+        }),
+    }
+    for member in team:
+        portrait = original_portraits.get(member.name)
+        if portrait and member.photo.name in portrait[1]:
+            member.team_card_photo_url = static(portrait[0])
     sections = AboutSection.objects.filter(published=True)
     return render(request, 'website/about.html', context(
         intro=sections.filter(kind='intro').first(),
@@ -37,7 +57,7 @@ def about(request):
         networks=sections.filter(kind='network'),
         founder=sections.filter(kind='founder').first(),
         founder_member=TeamMember.objects.filter(name='John Wolfs', published=True).first(),
-        team=TeamMember.objects.filter(published=True),
+        team=team,
     ))
 
 def practice_areas(request):

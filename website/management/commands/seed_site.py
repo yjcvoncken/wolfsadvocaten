@@ -50,7 +50,7 @@ class Command(BaseCommand):
             summary = summaries[i - 1]
             PracticeArea.objects.get_or_create(title=title,defaults={'summary':summary,'body':profiles.get(('area',title),summary),'image':f'practice/{i}.jpg','order':i})
         for i,(name,role,email,photo) in enumerate(TEAM,1):
-            TeamMember.objects.get_or_create(name=name,defaults={'role':role,'email':email,'photo':photo,'biography':profiles.get(('team',name),BIOS.get(name,'')),'order':i, 'show_on_about': name in ('John Wolfs','Maurice van Efferink','Joost van den Akker','Menno van Term','Vera Ubaghs')})
+            TeamMember.objects.get_or_create(name=name,defaults={'role':role,'email':email,'photo':photo,'biography':profiles.get(('team',name),BIOS.get(name,'')),'order':i, 'show_on_about': name in ('John Wolfs','Maurice van Efferink','Joost van den Akker','Menno van Term','Ella Delanty','Romy Brüll','Vera Ubaghs')})
         call_command('seed_about')
         archive = Path(__file__).resolve().parents[2] / 'data' / 'source_posts.json'
         if archive.exists():

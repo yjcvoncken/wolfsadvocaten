@@ -63,7 +63,7 @@ class WebsiteTests(TestCase):
         self.assertNotContains(self.client.get(reverse('team')), 'team-extra-line')
         form = modelform_factory(TeamMember, form=translation_form(TeamMember), fields='__all__')(data={
             'name': member.name, 'role': 'Attorney', 'extra_line': 'Cooperation partner',
-            'extra_line_nl': 'Samenwerkingspartner', 'order': 0, 'published': True,
+            'extra_line_nl': 'Samenwerkingspartner', 'order': 0, 'published': True, 'show_on_about': True,
         }, instance=member)
         self.assertTrue(form.is_valid(), form.errors)
         form.save()
@@ -177,7 +177,7 @@ class WebsiteTests(TestCase):
         self.assertContains(page, section.title)
         self.assertContains(page, section.body)
         self.assertContains(page, member.name)
-        self.assertContains(page, 'Home only member')
+        self.assertNotContains(page, 'Home only member')
         self.assertNotContains(page, 'Hidden section')
         self.assertContains(self.client.get(reverse('home')), member.name)
 
@@ -243,7 +243,7 @@ class WebsiteTests(TestCase):
         site = SiteSettings.objects.create(phone='+31 85 123 4567')
         member = TeamMember.objects.create(
             name='Original member', role='Attorney', email='old@example.com',
-            photo='team/old.jpg', show_on_home=False, show_on_about=False)
+            photo='team/old.jpg', show_on_home=False, show_on_about=True)
         member.name = 'Updated member'
         member.role = 'Senior attorney'
         member.email = 'updated@example.com'

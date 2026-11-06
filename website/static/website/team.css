@@ -1,29 +1,42 @@
 /* Shared team cards on Home, About us and Team. */
-body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:40px;background:#f3f8fe}
-body .team-list .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;align-items:stretch}
-body .team-list .team-card{height:auto;min-height:0;display:flex;flex-direction:column;border:1px solid #ccc;border-radius:18px;background:#eef0f2;overflow:hidden;position:relative}
-body .team-list .team-photo{width:100%;height:auto;min-height:0;aspect-ratio:182/206;display:block;margin:0;flex:none;border-radius:0;overflow:hidden;background:transparent}
-/* Show the entire portrait so heads stay visible at every card width. */
-body .team-list .team-photo img{width:100%;height:100%;object-fit:contain;object-position:center top}
-body .team-list .team-meta{width:100%;padding:24px 12px;min-height:100px;flex:1;margin:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0;height:auto}
-body .team-list .team-meta>a{font:12px/1.5 WolfsRoman,Helvetica,sans-serif;color:inherit;margin:0;overflow-wrap:anywhere;max-width:100%}
+body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:40px 44px;background:#fff}
+body .team-list .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:50px;align-items:stretch}
+body .team-list .team-card{height:auto;min-height:0;display:flex;flex-direction:column;border:2px solid #d8d2c6;border-radius:20px;background:#faf7f2;overflow:hidden;position:relative}
+body .team-list .team-photo{width:100%;height:256px;min-height:256px;display:block;margin:0;flex:none;border-radius:0;overflow:hidden;background:transparent}
+/* Match the original portrait crops, with each face positioned individually. */
+body .team-list .team-photo img{width:100%;height:100%;object-fit:cover;object-position:var(--portrait-position,center 35%)}
+body .team-list .team-meta{width:100%;padding:20px 12px 28px;min-height:140px;flex:1;margin:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0;height:auto}
+body .team-list .team-meta>a{font:14px/1.6 WolfsRoman,Helvetica,sans-serif;color:inherit;margin:0;overflow-wrap:anywhere;max-width:100%}
 body .team-list .team-meta .team-email{order:-1}
-body .team-list .team-meta h3{font:clamp(17px,1.25vw,23px)/1.25 WolfsRoman,Helvetica,sans-serif;letter-spacing:0;margin:0;width:100%;white-space:nowrap}
+body .team-list .team-meta h3{font:clamp(18px,1.64vw,30px)/1.25 WolfsRoman,Helvetica,sans-serif;letter-spacing:0;margin:0;width:100%;white-space:nowrap}
 body .team-list .team-meta h3 a{font:inherit;display:inline-block;white-space:nowrap;word-break:normal}
 body .team-list .team-meta .team-phone{margin-top:4px}
-body .team-list .team-meta p{font:400 12px/1.5 WolfsRoman,Helvetica,sans-serif;margin:4px 0 0}
+body .team-list .team-meta p{font:400 14px/1.6 WolfsRoman,Helvetica,sans-serif;margin:4px 0 0}
 body .team-list .team-meta .team-extra-line{order:5}
+body.home-page .team-list .team-phone{display:none}
+body .team-card--john-wolfs{--portrait-position:50% 37%}
+body .team-card--maurice-van-efferink{--portrait-position:50% 34%}
+body .team-card--joost-van-den-akker{--portrait-position:50% 50%}
+body .team-card--menno-van-term{--portrait-position:48% 30%}
+body .team-card--ella-delanty{--portrait-position:48% 50%}
+body .team-card--vera-ubaghs{--portrait-position:54% 35%}
+body .team-card--romy-brull{--portrait-position:51% 31%}
+body .team-card--ron-meulmeester{--portrait-position:50% 12%}
+body .team-card--bas-janssen{--portrait-position:50% 10%}
+body .team-card--gino-di-antonio{--portrait-position:50% 10%}
 @media(max-width:1000px){
  body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:30px}
  body .team-list .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
  body .team-list .team-meta h3{font-size:22px}
+ body .team-list .team-photo{height:300px;min-height:300px}
 }
 @media(max-width:750px){
  body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:24px 20px}
  body .team-list .team-grid{grid-template-columns:1fr;gap:24px}
+ body .team-list .team-photo{height:auto;min-height:0;aspect-ratio:3/4}
  body .team-list .team-meta{padding:24px 16px}
 }
 
 /* Internal profile references throughout public page content. */
-main a.profile-mention{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+main a.profile-mention,main a.profile-mention:hover,main a.article-inline-link[href$="/john-wolfs/"]{color:inherit;font:inherit;text-decoration:none}
 main a.profile-mention:focus-visible{outline:2px solid currentColor;outline-offset:3px}

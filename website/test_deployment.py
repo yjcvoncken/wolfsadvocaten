@@ -64,6 +64,12 @@ class DeploymentTests(TestCase):
             self.assertEqual(BlogPost.objects.count(), 114)
             self.assertTrue(SiteSettings.objects.exists())
             self.assertFalse(TeamMember.objects.filter(published=False).exists())
+            about_names = set(TeamMember.objects.filter(show_on_about=True).values_list('name', flat=True))
+            self.assertTrue({
+                'John Wolfs', 'Maurice van Efferink', 'Joost van den Akker', 'Menno van Term',
+                'Ella Delanty', 'Romy Brüll', 'Vera Ubaghs',
+            }.issubset(about_names))
+            self.assertFalse(about_names.intersection({'Ron Meulmeester', 'Bas Janssen', 'Gino di Antonio'}))
             self.assertFalse(get_user_model().objects.exists())
             site = SiteSettings.objects.first()
             self.assertTrue(Path(site.hero_image.path).is_file())

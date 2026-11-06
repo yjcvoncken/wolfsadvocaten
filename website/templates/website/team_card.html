@@ -1,5 +1,5 @@
-{% load localization %}<article class="team-card">
-  <a class="team-photo" href="{{ member.get_absolute_url }}">{% if member.photo %}<img src="{{ member.photo.url }}" alt="{{ member.name }}" loading="lazy">{% else %}<span>{{ member.name|slice:':1' }}</span>{% endif %}</a>
+{% load localization %}<article class="team-card team-card--{{ member.name|slugify }}">
+  <a class="team-photo" href="{{ member.get_absolute_url }}">{% if member.photo %}<img src="{{ member.team_card_photo_url|default:member.photo.url }}" alt="{{ member.name }}" loading="lazy">{% else %}<span>{{ member.name|slice:':1' }}</span>{% endif %}</a>
   <div class="team-meta">
     <h3><a href="{{ member.get_absolute_url }}">{{ member.name }}</a></h3>
     {% if member.email %}<a class="team-email" href="mailto:{{ member.email }}">{{ member.email }}</a>{% endif %}

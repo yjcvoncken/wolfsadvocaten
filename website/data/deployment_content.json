@@ -197,7 +197,7 @@
     "order": 5,
     "published": true,
     "show_on_home": true,
-    "show_on_about": false
+    "show_on_about": true
   }
 },
 {
@@ -241,7 +241,7 @@
     "order": 7,
     "published": true,
     "show_on_home": true,
-    "show_on_about": false
+    "show_on_about": true
   }
 },
 {

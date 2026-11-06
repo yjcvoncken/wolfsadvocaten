@@ -40,7 +40,7 @@ python3 -m venv .venv
 
 Visit http://127.0.0.1:8000/ and sign in at http://127.0.0.1:8000/admin/.
 
-The seed command is safe to rerun; it does not overwrite existing records. Uploaded media is stored in `media/`. The included media files reproduce publicly displayed site images. The blog archive contains 114 posts with article text and images. Contact messages are stored in the admin; no email delivery is configured. The terms and privacy pages link to copies of the original public PDFs. The language selector switches between the local English site (`/`) and Dutch site (`/nl/`), preserving the current page. Navigation, forms, pages, the complete blog archive and legal documents are available in both languages.
+The seed command is safe to rerun; it does not overwrite existing records. Uploaded media is stored in `media/`. The included media files reproduce publicly displayed site images. The blog archive contains 114 posts with article text and images. Contact messages are stored in the admin and emailed to info@wolfsadvocaten.nl when SMTP is configured. The terms and privacy pages link to copies of the original public PDFs. The language selector switches between the local English site (`/`) and Dutch site (`/nl/`), preserving the current page. Navigation, forms, pages, the complete blog archive and legal documents are available in both languages.
 
 For deployment, follow the Railway instructions above. Local development continues to use SQLite and `media/`.
 
@@ -77,3 +77,9 @@ Open **Photos** in admin (`/admin/website/sitephoto/`) to find images by name or
 For a fresh installation to start with the current local public content, run `python manage.py export_public_site` and commit `website/data/deployment_content.json` and `website/data/initial_media/`. The export includes only published content and its referenced photos/documents. It excludes users, sessions, contact submissions and drafts. Existing Railway installations keep their own content; changing the snapshot does not overwrite them.
 
 GitHub Actions runs the Django checks and test suite on pushes and pull requests. `scripts/check_production.py` tests fresh production startup, public media and static files using an isolated temporary database and upload directory.
+
+## Contact form email
+
+Set `EMAIL_HOST`, `EMAIL_PORT` (usually `587`), `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `EMAIL_USE_TLS=1` and `EMAIL_USE_SSL=0` in the Railway service variables. Use the SMTP credentials supplied by the mail provider. For implicit TLS on port 465, set `EMAIL_USE_TLS=0` and `EMAIL_USE_SSL=1`. Set `DEFAULT_FROM_EMAIL` to an address your provider allows to send mail (default: `Wolfs Advocaten <info@wolfsadvocaten.nl>`). Never commit actual passwords. The example file is documentation; Django does not load it automatically.
+
+Valid submissions send a plain text notification to `info@wolfsadvocaten.nl`, with the visitor's address as Reply-To. Local development without `EMAIL_HOST` prints email to the console; production uses SMTP. Messages remain in the admin if sending fails, and an error containing the submission ID is logged. Failed notifications are not retried automatically. After configuration, submit a test through the deployed form and verify receipt and Reply-To.

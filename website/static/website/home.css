@@ -142,3 +142,12 @@
 .home-page .hero-caption .circle-scroll{position:static;flex:none}
 @media(max-width:1000px){.home-page .hero-caption{left:25px;right:25px;gap:20px}}
 @media(max-width:750px){.home-page .hero-caption{left:20px;right:20px;bottom:20px;gap:16px}.home-page .hero-caption h1{font-size:clamp(20px,4.7vw,32px)}}
+
+/* Desktop spacing in the supplied original-site screenshots. */
+@media(min-width:1001px){
+ .home-page .home-about{height:1280px}
+ .home-page .contact-pill{font-size:20px}
+ .home-page .home-about-copy .large-copy{top:167.7px}
+ .home-page .home-about-copy>p:nth-child(2){top:264.35px}
+ .home-page .home-about-copy .round-link{bottom:657px}
+}
