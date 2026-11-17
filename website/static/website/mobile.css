@@ -52,7 +52,7 @@
  /* Portraits keep the same size and card spacing on both team listings. */
  body.home-page .home-team.team-list{padding:30px 20px}
  body .team-list .team-photo{aspect-ratio:8/11;height:auto;min-height:0}
- body .team-list .team-meta{padding:0 20px 20px;min-height:78px;justify-content:center}
+ body .team-list .team-meta{padding:14px 20px 16px;min-height:0;justify-content:flex-start}
  body .team-list .team-meta h3{font-size:clamp(18px,calc(17.75px + .1475vw),20px)}
  body .team-list .team-meta p{margin-top:3px}
  body .team-list .team-grid{gap:0}
@@ -65,8 +65,8 @@
  .about-page .founder-details .about-copy{margin-top:30px}
  body.about-page .about-team.team-list .team-grid{gap:0}
  body.about-page .about-team.team-list .team-photo{height:auto;aspect-ratio:8/11}
- body.about-page .about-team.team-list .team-meta{min-height:147px;padding:20px 5%}
- body.about-page .about-team.team-list .team-meta h3{font-size:clamp(18px,calc(17.75px + .1475vw),20px);margin-bottom:12px}
+ body.about-page .about-team.team-list .team-meta{min-height:0;padding:14px 5% 16px}
+ body.about-page .about-team.team-list .team-meta h3{font-size:clamp(18px,calc(17.75px + .1475vw),20px);margin-bottom:0}
  /* Blog cards show the whole headline, a three-line excerpt and the separator. */
  .blog-page .blog-list{padding-top:5px}
  .blog-page .blog-list>h1{margin-bottom:26px}

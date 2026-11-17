@@ -1,24 +1,24 @@
 (() => {
-  const teamNames = [...document.querySelectorAll('.team-list .team-meta h3')];
-  function fitTeamName(heading) {
-    heading.style.removeProperty('font-size');
-    const name = heading.querySelector('a');
-    const available = heading.clientWidth;
-    if (!name || !available) return;
-    const width = name.getBoundingClientRect().width;
+  const labels = [...document.querySelectorAll('.team-list .team-meta h3, .team-list .team-email')];
+  function fitLabel(label) {
+    label.style.removeProperty('font-size');
+    const available = label.clientWidth;
+    if (!available) return;
+    const range = document.createRange();
+    range.selectNodeContents(label);
+    const width = range.getBoundingClientRect().width;
     if (width > available) {
-      const size = parseFloat(getComputedStyle(heading).fontSize);
-      heading.style.fontSize = `${Math.floor(size * available / width * 100) / 100}px`;
+      const size = parseFloat(getComputedStyle(label).fontSize);
+      label.style.fontSize = `${Math.floor(size * available / width * 100) / 100}px`;
     }
   }
-  const fitTeamNames = () => teamNames.forEach(fitTeamName);
-  fitTeamNames();
-  document.fonts.ready.then(fitTeamNames);
+  const fitLabels = () => labels.forEach(fitLabel);
+  fitLabels();
+  document.fonts.ready.then(fitLabels);
   if ('ResizeObserver' in window) {
-    const nameResizeObserver = new ResizeObserver(fitTeamNames);
-    teamNames.forEach(heading => nameResizeObserver.observe(heading.parentElement));
+    const observer = new ResizeObserver(fitLabels);
+    new Set(labels.map(label => label.parentElement)).forEach(parent => observer.observe(parent));
   } else {
-    window.addEventListener('resize', fitTeamNames);
+    window.addEventListener('resize', fitLabels);
   }
-
 })();
