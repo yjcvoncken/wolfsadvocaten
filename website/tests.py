@@ -63,7 +63,10 @@ class WebsiteTests(TestCase):
         original = static('website/images/about-team/john-original.jpg')
         for path in ('/', '/about-us', '/john-wolfs', '/nl', '/nl/about-us', '/nl/john-wolfs'):
             response = self.client.get(path, follow=True)
-            self.assertContains(response, original)
+            self.assertContains(response, original if 'john-wolfs' in path else
+                                static('website/images/about-team/john-card.jpg'))
+            if 'john-wolfs' not in path:
+                self.assertContains(response, 'john-card-2x.jpg 2x')
             self.assertNotContains(response, 'about-team/john.png')
         member.photo = 'team/john-admin-replacement.jpg'
         member.save()

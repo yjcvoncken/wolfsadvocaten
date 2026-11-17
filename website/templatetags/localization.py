@@ -111,3 +111,14 @@ def team_contact(member, fallback=''):
     if extra_is_phone and normalized(extra) == normalized(phone):
         extra = ''
     return {'phone': phone, 'href': normalized(phone), 'extra_line': extra}
+
+
+@register.simple_tag
+def team_portrait(member):
+    from django.templatetags.static import static
+    source = getattr(member, 'team_card_photo_url', '') or member.portrait_url
+    if source == static('website/images/about-team/john-original.jpg'):
+        source = static('website/images/about-team/john-card.jpg')
+        retina = static('website/images/about-team/john-card-2x.jpg')
+        return {'src': source, 'srcset': f'{source} 1x, {retina} 2x'}
+    return {'src': source, 'srcset': ''}
