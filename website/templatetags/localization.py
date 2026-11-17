@@ -97,3 +97,17 @@ def language_url(url):
         return translated
     with override(get_language_from_path(url) or 'en'):
         return translate_url(url, target)
+
+
+@register.simple_tag
+def team_contact(member, fallback=''):
+    """Use admin contact fields and show phone-only extra lines just once."""
+    import re
+    extra = localized(member, 'extra_line').strip()
+    extra_is_phone = bool(re.fullmatch(r'[+\d\s().-]+', extra)) and len(re.sub(r'\D', '', extra)) >= 6
+    phone = member.phone or (extra if extra_is_phone else fallback)
+    def normalized(value):
+        return re.sub(r'[^+\d]', '', re.sub(r'\(0\)', '', value))
+    if extra_is_phone and normalized(extra) == normalized(phone):
+        extra = ''
+    return {'phone': phone, 'href': normalized(phone), 'extra_line': extra}

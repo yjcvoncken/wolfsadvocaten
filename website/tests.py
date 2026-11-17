@@ -9,6 +9,27 @@ def reverse(*args, **kwargs):
 from .models import AboutSection, TeamMember, BlogPost, ContactSubmission, PracticeArea
 
 class WebsiteTests(TestCase):
+    def test_team_phone_uses_admin_fields_without_duplicate_extra_line(self):
+        from django.template.loader import render_to_string
+        from django.utils.translation import override
+        from .templatetags.localization import team_contact
+        member = TeamMember(name='John Wolfs', role='Attorney',
+                            extra_line='+31(0)85 079 97 50')
+        site = {'phone': '+31 (0)85 079 97 50'}
+        with override('en'):
+            for phone in ('', '+31 (0)85 079 97 50'):
+                member.phone = phone
+                for template in ('website/team_card.html', 'website/team_profile.html'):
+                    html = render_to_string(template, {'member': member, 'site': site})
+                    self.assertEqual(html.count('href="tel:+31850799750"'), 1)
+                    self.assertNotIn('class="team-extra-line"', html)
+                    self.assertNotIn('class="profile-extra-line"', html)
+            member.phone = '+31 20 123 4567'
+            member.extra_line = 'Samenwerkingspartner'
+            contact = team_contact(member, site['phone'])
+            self.assertEqual(contact['phone'], member.phone)
+            self.assertEqual(contact['extra_line'], member.extra_line)
+
     def test_blog_navigation_groups_categories_and_localizes_links(self):
         import re
         from django.utils.translation import override
