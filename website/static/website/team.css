@@ -2,9 +2,9 @@
 body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:40px 44px;background:#fff}
 body .team-list .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:50px;align-items:stretch}
 body .team-list .team-card{height:auto;min-height:0;display:flex;flex-direction:column;border:2px solid #d8d2c6;border-radius:20px;background:#faf7f2;overflow:hidden;position:relative}
-body .team-list .team-photo{width:100%;height:256px;min-height:256px;display:block;margin:0;flex:none;border-radius:0;overflow:hidden;background:transparent}
-/* Keep the complete source portrait visible at every card size. */
-body .team-list .team-photo img{width:100%;height:100%;object-fit:contain;object-position:center}
+body .team-list .team-photo{width:100%;height:auto;min-height:0;aspect-ratio:8/11;display:block;margin:0;flex:none;border-radius:0;overflow:hidden;background:transparent}
+/* Tall, edge-to-edge portraits match the original team cards. */
+body .team-list .team-photo img{width:100%;height:100%;object-fit:cover;object-position:var(--portrait-position,center 30%)}
 body .team-list .team-meta{width:100%;padding:20px 12px 28px;min-height:140px;flex:1;margin:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0;height:auto}
 body .team-list .team-meta>a{font:14px/1.6 WolfsRoman,Helvetica,sans-serif;color:inherit;margin:0;overflow-wrap:anywhere;max-width:100%}
 body .team-list .team-meta .team-email{order:-1}
@@ -28,12 +28,11 @@ body .team-card--gino-di-antonio{--portrait-position:50% 10%}
  body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:30px}
  body .team-list .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
  body .team-list .team-meta h3{font-size:22px}
- body .team-list .team-photo{height:300px;min-height:300px}
 }
 @media(max-width:750px){
  body .team-list,body.home-page .home-team.team-list,body.about-page .about-team.team-list{padding:24px 20px}
  body .team-list .team-grid{grid-template-columns:1fr;gap:24px}
- body .team-list .team-photo{height:auto;min-height:0;aspect-ratio:3/4}
+ body .team-list .team-photo{height:auto;min-height:0;aspect-ratio:8/11}
  body .team-list .team-meta{padding:24px 16px}
 }
 
