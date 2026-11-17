@@ -41,12 +41,12 @@
 .about-page .founder-details .about-copy{margin-top:67px}
 .about-page .founder-details .about-copy p{margin:0}
 .about-page .founder-details .about-copy p:nth-child(n+3){margin-top:1.6em}
-.about-page .about-founder>img{width:100%;height:auto;min-height:638px;object-fit:cover;border-radius:20px}
+.about-page .about-founder>img{width:100%;height:auto;min-height:0;object-fit:contain;border-radius:20px}
 .about-page .about-team{border-radius:0 0 20px 20px;padding:125px 50px 25px}
 .about-page .about-team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:50px}
 .about-page .about-person{height:576px;border:0;border-radius:20px;background:#f3f1e4;overflow:hidden;display:flex;flex-direction:column}
 .about-page .about-person-photo{height:384px;display:block;flex:none}
-.about-page .about-person-photo img{object-fit:cover;object-position:center 30%}
+.about-page .about-person-photo img{object-fit:contain;object-position:center}
 .about-page .about-person-info{padding:20px 5%;flex:1;display:flex;flex-direction:column;justify-content:center}
 .about-page .about-person-info>p{font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif;margin-bottom:12px}
 .about-page .about-person-info h3{font:clamp(18px,calc(18px + .583333vw),30px)/1.2 WolfsRoman,Helvetica,sans-serif;margin:0 0 12px;letter-spacing:-.02em}
@@ -128,7 +128,7 @@ body.about-page .about-shell .about-team.team-list{margin-top:50px;padding:75px 
 body.about-page .about-team.team-list .team-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:50px}
 body.about-page .about-team.team-list .team-card{height:auto;min-height:576px;border:0;border-radius:20px;background:#f5eee4}
 body.about-page .about-team.team-list .team-photo{height:384px;min-height:384px;width:100%;aspect-ratio:auto;margin:0;border-radius:20px 20px 0 0}
-body.about-page .about-team.team-list .team-photo img{object-fit:cover;object-position:center 30%}
+body.about-page .about-team.team-list .team-photo img{object-fit:contain;object-position:center}
 body.about-page .about-team.team-list .team-meta{padding:20px 5%;min-height:192px;justify-content:center}
 body.about-page .about-team.team-list .team-meta h3{order:1;font-size:clamp(18px,calc(18px + .583333vw),30px);margin:0 0 12px}
 body.about-page .about-team.team-list .team-meta>p:not(.team-extra-line){order:0;font:var(--about-body)/1.6 WolfsLight,Helvetica,sans-serif;margin:0 0 12px}
