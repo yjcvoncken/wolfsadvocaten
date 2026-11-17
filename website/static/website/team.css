@@ -14,7 +14,6 @@ body .team-list .team-meta h3 a{font:inherit;display:inline-block;white-space:no
 body .team-list .team-meta .team-phone{margin-top:4px}
 body .team-list .team-meta p{font:400 14px/1.6 WolfsRoman,Helvetica,sans-serif;margin:4px 0 0}
 body .team-list .team-meta .team-extra-line{order:5}
-body.home-page .team-list .team-phone{display:none}
 body .team-card--john-wolfs{--portrait-position:50% 37%}
 body .team-card--maurice-van-efferink{--portrait-position:50% 34%}
 body .team-card--joost-van-den-akker{--portrait-position:50% 50%}

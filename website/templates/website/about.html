@@ -27,7 +27,7 @@
   <section class="about-team-heading about-panel" id="team"><h2>{% tr "Meet the team" %}</h2></section>
   {% if founder %}<section class="about-founder about-panel">
     <div class="founder-details"><span>{{ founder|localized:"lead" }}</span><h2>{{ founder|localized:"title" }}</h2>
-      {% if founder_member %}<a class="founder-email" href="mailto:{{ founder_member.email }}">{{ founder_member.email }}</a><a href="tel:{{ founder_member.phone|default:site.phone }}">{{ founder_member.phone|default:site.phone }}</a>{% endif %}
+      {% if founder_member %}<a class="founder-email" href="mailto:{{ founder_member.email }}">{{ founder_member.email }}</a><a href="tel:+31850799750">+31(0)85 079 97 50</a>{% endif %}
       <div class="about-copy">{{ founder|localized:"body"|linebreaks }}</div>
     </div>
     {% if founder.image %}<img src="{% if founder_member and founder.image.name == 'about/founder.jpg' %}{{ founder_member.portrait_url|default:founder.image.url }}{% else %}{{ founder.image.url }}{% endif %}" alt="{{ founder|localized:"title" }}" loading="lazy">{% endif %}
