@@ -56,7 +56,7 @@ DUTCH = {
     'Logistics and transport': 'Logistiek en transport', 'Wolfs Advocaten consultation': 'Overleg bij Wolfs Advocaten',
     'Close menu': 'Menu sluiten', 'Site navigation': 'Navigatie', 'Main navigation': 'Hoofdnavigatie',
     'Wolfs Advocaten home': 'Wolfs Advocaten homepage', 'Wolfs Advocaten on LinkedIn': 'Wolfs Advocaten op LinkedIn',
-    'Blog categories': 'Blogcategorieën', 'Blog pages': 'Blogpagina’s', 'First page': 'Eerste pagina',
+    'More': 'Meer', 'Blog categories': 'Blogcategorieën', 'Blog pages': 'Blogpagina’s', 'First page': 'Eerste pagina',
     'Previous page': 'Vorige pagina', 'Next page': 'Volgende pagina', 'Last page': 'Laatste pagina',
     'About us — Wolfs Advocaten Maastricht': 'Over ons — Wolfs Advocaten Maastricht',
     'Attorney': 'Advocaat', 'Attorney - managing partner': 'Advocaat - managing partner',

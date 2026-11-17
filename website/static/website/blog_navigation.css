@@ -1,0 +1,25 @@
+/* Category links sit below the site header and have comfortable click targets. */
+.blog-category-nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 20px;font:16px/1.4 WolfsLight,Helvetica,Arial,sans-serif;isolation:isolate}
+.article-detail .blog-category-nav{padding:110px 0 70px;min-height:250px}
+.blog-list .blog-category-nav{padding:0 0 40px}
+.blog-category-nav>a,.blog-category-more>summary{display:flex;align-items:center;min-height:44px;padding:10px;cursor:pointer;color:inherit;white-space:nowrap;touch-action:manipulation}
+.blog-category-nav a:hover,.blog-category-more>summary:hover{color:var(--blue)}
+.blog-category-nav a:focus-visible,.blog-category-more>summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+.blog-category-more{position:relative}
+.blog-category-more>summary{list-style:none;gap:12px}
+.blog-category-more>summary::-webkit-details-marker{display:none}
+.blog-category-more>summary span{width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-top:-4px}
+.blog-category-more[open]>summary span{transform:rotate(225deg);margin-top:4px}
+.blog-category-dropdown{position:absolute;right:0;top:calc(100% + 4px);width:280px;max-width:calc(100vw - 40px);padding:8px;background:white;border:1px solid #e9e6de;border-radius:8px;box-shadow:0 8px 24px #0002}
+.blog-category-dropdown a{display:flex;align-items:center;min-height:44px;padding:10px 12px;overflow-wrap:anywhere}
+.blog-category-dropdown a:hover{background:var(--cream)}
+@media(max-width:1000px){.blog-category-nav{gap:4px 10px;font-size:14px}}
+@media(max-width:750px){
+ .article-detail .blog-category-nav{padding:130px 10px 30px;min-height:0}
+ .blog-list .blog-category-nav{padding:0 0 25px}
+ .blog-category-nav{justify-content:flex-start;gap:4px 8px}
+ .blog-category-nav>a,.blog-category-more>summary{padding:10px 8px}
+ .blog-category-dropdown{right:auto;left:0;width:min(280px,calc(100vw - 80px))}
+ .blog-category-more{flex-basis:100%}
+ .blog-category-more>summary{width:max-content}
+}

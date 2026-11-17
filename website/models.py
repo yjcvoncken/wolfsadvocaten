@@ -44,6 +44,17 @@ class TeamMember(BilingualContent):
     def get_absolute_url(self):
         from .seo import model_path
         return model_path('members', self.name, reverse('content_page', args=[slugify(self.name)]))
+    @property
+    def portrait_url(self):
+        # Serve the unmodified Wix original for the imported John portraits.
+        # Newly uploaded admin photos continue to take precedence.
+        if self.name == 'John Wolfs' and self.photo.name in {
+            'team/john.jpg', 'team/john-wolfs-reference-20261021.jpg',
+        }:
+            from django.templatetags.static import static
+            return static('website/images/about-team/john-original.jpg')
+        return self.photo.url if self.photo else ''
+
     def __str__(self): return self.name
 
 

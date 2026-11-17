@@ -30,7 +30,7 @@
       {% if founder_member %}<a class="founder-email" href="mailto:{{ founder_member.email }}">{{ founder_member.email }}</a><a href="tel:{{ founder_member.phone|default:site.phone }}">{{ founder_member.phone|default:site.phone }}</a>{% endif %}
       <div class="about-copy">{{ founder|localized:"body"|linebreaks }}</div>
     </div>
-    {% if founder.image %}<img src="{{ founder.image.url }}" alt="{{ founder|localized:"title" }}" loading="lazy">{% endif %}
+    {% if founder.image %}<img src="{% if founder_member and founder.image.name == 'about/founder.jpg' %}{{ founder_member.portrait_url|default:founder.image.url }}{% else %}{{ founder.image.url }}{% endif %}" alt="{{ founder|localized:"title" }}" loading="lazy">{% endif %}
   </section>{% endif %}
   <section class="about-team about-panel team-list" aria-label="{% tr "Our team" %}">
     <div class="team-grid">{% for member in team %}{% include 'website/team_card.html' %}{% endfor %}</div>

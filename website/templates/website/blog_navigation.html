@@ -1,0 +1,12 @@
+{% load localization %}
+<nav class="blog-category-nav" aria-label="{% tr 'Blog categories' %}">
+  <a href="{% original_url 'blog' %}">{% tr 'All Posts' %}</a>
+  {% blog_categories as categories %}
+  {% for category in categories|slice:':4' %}<a href="{{ category.url }}">{{ category.title }}</a>{% endfor %}
+  <details class="blog-category-more">
+    <summary>{% tr 'More' %}<span aria-hidden="true"></span></summary>
+    <div class="blog-category-dropdown">
+      {% for category in categories|slice:'4:' %}<a href="{{ category.url }}">{{ category.title }}</a>{% endfor %}
+    </div>
+  </details>
+</nav>

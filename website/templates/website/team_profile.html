@@ -10,6 +10,6 @@
     <p>{{ member.phone|default:'+31 (0)85 079 97 50' }}</p>
   </div>
   {% if member.biography %}<div class="profile-bio readable">{{ member|localized:"biography"|linebreaks }}</div>{% endif %}
-  <div class="profile-portrait">{% if member.photo %}<img class="profile-photo" src="{{ member.photo.url }}" alt="{{ member.name }}">{% endif %}</div>
+  <div class="profile-portrait">{% if member.photo %}<img class="profile-photo" src="{{ member.portrait_url }}" alt="{{ member.name }}">{% endif %}</div>
 </div></section></div>
 {% endblock %}

@@ -43,9 +43,6 @@ def about(request):
     ))}
     team.sort(key=lambda member: original_order.get(member.name, len(original_order)))
     original_portraits = {
-        'John Wolfs': ('website/images/about-team/john.png', {
-            'team/john.jpg', 'team/john-wolfs-reference-20261021.jpg',
-        }),
         'Joost van den Akker': ('website/images/about-team/joost.png', {
             'team/joost.jpg', 'team/joost-van-den-akker-reference-20261021.png',
             'team/joost-van-den-akker-current-20261105.jpg',

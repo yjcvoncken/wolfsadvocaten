@@ -9,6 +9,48 @@ def reverse(*args, **kwargs):
 from .models import AboutSection, TeamMember, BlogPost, ContactSubmission, PracticeArea
 
 class WebsiteTests(TestCase):
+    def test_blog_navigation_groups_categories_and_localizes_links(self):
+        import re
+        from django.utils.translation import override
+        from .templatetags.localization import blog_categories
+        post = BlogPost.objects.create(title='Navigation article', slug='navigation-article',
+                                       body='Article body', published_at=date.today(), published=True)
+        for language, prefix, more in (('en', '', 'More'), ('nl', '/nl', 'Meer')):
+            with override(language):
+                categories = blog_categories()
+                for path in (prefix + '/blog', prefix + '/post/navigation-article'):
+                    response = self.client.get(path, follow=True)
+                    self.assertEqual(response.status_code, 200)
+                    self.assertTemplateUsed(response, 'website/blog_navigation.html')
+                    nav = re.search(r'<nav class="blog-category-nav".*?</nav>',
+                                    response.content.decode(), re.S).group()
+                    primary, dropdown = nav.split('<details', 1)
+                    self.assertEqual(primary.count('href='), 5)
+                    self.assertEqual(dropdown.count('href='), 4)
+                    self.assertIn('<summary>' + more, dropdown)
+                    for index, category in enumerate(categories):
+                        self.assertIn('href="' + category['url'] + '"',
+                                      primary if index < 4 else dropdown)
+
+    def test_john_original_portrait_is_shared_and_admin_replacements_are_preserved(self):
+        from django.templatetags.static import static
+        member = TeamMember.objects.create(
+            name='John Wolfs', role='Attorney', biography='John biography',
+            photo='team/john-wolfs-reference-20261021.jpg')
+        AboutSection.objects.create(key='founder', kind='founder', title='John Wolfs',
+                                    image='about/founder.jpg')
+        original = static('website/images/about-team/john-original.jpg')
+        for path in ('/', '/about-us', '/john-wolfs', '/nl', '/nl/about-us', '/nl/john-wolfs'):
+            response = self.client.get(path, follow=True)
+            self.assertContains(response, original)
+            self.assertNotContains(response, 'about-team/john.png')
+        member.photo = 'team/john-admin-replacement.jpg'
+        member.save()
+        for path in ('/', '/about-us', '/john-wolfs'):
+            response = self.client.get(path, follow=True)
+            self.assertContains(response, member.photo.url)
+            self.assertNotContains(response, original)
+
     def test_vacancy_detail_uses_same_footer_layout_and_language_as_listing(self):
         import re
         from django.utils.translation import activate, get_language
